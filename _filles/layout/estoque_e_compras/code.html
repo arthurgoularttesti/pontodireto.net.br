@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ponto Direto - Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dde3eb",
+                        "surface": "#f8f9ff",
+                        "tertiary": "#11171d",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface": "#0b1c30",
+                        "outline": "#75777e",
+                        "inverse-primary": "#b6c7eb",
+                        "secondary-container": "#fd8b00",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#081b38",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed": "#161c22",
+                        "primary": "#031632",
+                        "secondary": "#904d00",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline-variant": "#c5c6ce",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "on-primary-container": "#8293b5",
+                        "tertiary-container": "#262c32",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4e5f7e",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#603100",
+                        "on-tertiary-container": "#8d939a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "on-primary-fixed-variant": "#374765",
+                        "on-background": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcc3",
+                        "surface-container-high": "#dce9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "gutter": "20px",
+                        "target-min": "48px",
+                        "touch-margin": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "numeral-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<aside class="flex flex-col h-full pt-4 pb-8 h-screen w-64 fixed left-0 top-0 bg-[#1A2B48] text-white shadow-xl border-r border-slate-700 z-50">
+<div class="px-6 mb-8">
+<img alt="Ponto Direto Logo" class="h-10 mb-2 object-contain" data-alt="Modern geometric retail logo for Ponto Direto brand with high contrast white and orange colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWNf7ry8gxe3w69CyDN_rOxK_Fxq4g1032of6sGE8k2J86lGLG3qLExMFNK_iPeqXpUFYO4YLhYizl8IkIUnybFYSguExYegz0VjG5jXoawy4fXEpv8ZC1pLRbRihW90O1DvjKisGwocTZokIHgAb9alwSyQMuQYELNiAY4QBS6QFAgqAKr0qvr8tSLnrjkZfBTTyS7Zen7djdpVQoM1XyN7L_-SJ81TR27VS2zSRU5KqCkgHCGYmnehKQdfTgccEKR7BG2Jit5uU"/>
+<h2 class="text-orange-500 font-bold uppercase tracking-widest text-xs">Main Branch</h2>
+<p class="text-slate-400 text-[10px] uppercase">Terminal 001</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-300 hover:text-white px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out hover:bg-[#2A3B58]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[14px] font-medium">Dashboard</span>
+</a>
+<a class="text-slate-300 hover:text-white px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out hover:bg-[#2A3B58]" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-inter text-[14px] font-medium">PDV Fast</span>
+</a>
+<a class="bg-orange-600 text-white rounded-r-full mr-4 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-inter text-[14px] font-medium">Inventory</span>
+</a>
+<a class="text-slate-300 hover:text-white px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out hover:bg-[#2A3B58]" href="#">
+<span class="material-symbols-outlined" data-icon="lock_clock">lock_clock</span>
+<span class="font-inter text-[14px] font-medium">Cash Closing</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-slate-700 pt-4">
+<a class="text-slate-300 hover:text-white px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out hover:bg-[#2A3B58]" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-inter text-[14px] font-medium">Support</span>
+</a>
+<a class="text-slate-300 hover:text-white px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out hover:bg-[#2A3B58]" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-inter text-[14px] font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<main class="ml-64 flex-1 h-screen overflow-y-auto">
+<header class="flex justify-between items-center h-16 px-6 w-full sticky top-0 z-40 bg-[#F8FAFC] border-b border-[#E2E8F0] shadow-sm">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-black text-[#1A2B48] font-inter tracking-tight">RetailFlow POS</h1>
+<div class="h-6 w-px bg-slate-200 mx-2"></div>
+<nav class="flex gap-6">
+<a class="text-orange-600 font-bold border-b-2 border-orange-600 h-16 flex items-center font-inter text-sm" href="#">Inventory Management</a>
+<a class="text-slate-500 hover:text-orange-600 transition-colors h-16 flex items-center font-inter text-sm" href="#">Suppliers</a>
+<a class="text-slate-500 hover:text-orange-600 transition-colors h-16 flex items-center font-inter text-sm" href="#">Purchase Orders</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus-within:ring-2 ring-primary-container">
+<span class="material-symbols-outlined text-slate-400 mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm font-inter w-64" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<img alt="Cashier Avatar" class="w-8 h-8 rounded-full border border-slate-200" data-alt="Close up portrait of a professional retail store manager in a clean studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXeVsbxxXTGsEz4_gas6DTfHPOThpCs6Azy4sxxOu8pQEMKG3kh7vSp5krtGLFhiSUkRdG3mKxDjoaL8oqWMmkGARKOqOCCGOd-X1mwKr46bXKQG3n2jVzL7NeGZnQRJJ5KOBUaZk77Ke8WR6wkNaTG6Wmd-NeqJYigWIhMZc_aqMu1sLY7bgE_fWQ9ta90Hvwiyc9BZcmPfsZ3ymEFqn0O_jYEAvNu_kmq6OxExMA_QBvBmyK1oJAKpqx13Fj0p8Nc4RilTIAlzg"/>
+</div>
+</header>
+<div class="p-container-padding">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 flex justify-between items-end mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Inventory Overview</h2>
+<p class="text-on-surface-variant font-body-md">Manage your stock levels and procurement automation.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-secondary-container text-white px-6 py-3 rounded font-label-bold flex items-center gap-2 shadow-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                            XML Entry
+                        </button>
+<button class="bg-primary text-white px-6 py-3 rounded font-label-bold flex items-center gap-2 shadow-md hover:brightness-125 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                            Add Product
+                        </button>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-9 space-y-gutter">
+<div class="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-label-bold text-primary uppercase tracking-wider">Product Inventory &amp; Volume Conversion</h3>
+<div class="flex gap-2">
+<span class="bg-success-container text-success px-2 py-1 rounded text-xs font-bold border border-success flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                    Stock Sync: Active
+                                </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface text-on-surface-variant text-[12px] uppercase font-bold tracking-widest border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4">Product Details</th>
+<th class="px-6 py-4">Current Stock</th>
+<th class="px-6 py-4">Unit of Measure</th>
+<th class="px-6 py-4">Volume Conversion</th>
+<th class="px-6 py-4">Min. Level</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="liquor">liquor</span>
+</div>
+<div>
+<div class="font-label-bold text-primary">Heineken Premium Lager 330ml</div>
+<div class="text-xs text-on-surface-variant">SKU: HEI-001-LGR</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-numeral-xl text-lg text-primary">242 <span class="text-sm font-medium text-on-surface-variant">units</span></div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded">Individual</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-primary font-medium">1 Case = 24 Units</div>
+<div class="text-xs text-on-surface-variant italic">10 Cases + 2 Un</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm">48 units</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:bg-primary hover:text-white p-2 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="local_drink">local_drink</span>
+</div>
+<div>
+<div class="font-label-bold text-primary">Coca-Cola Classic 2L</div>
+<div class="text-xs text-on-surface-variant">SKU: CC-CLA-2L0</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-numeral-xl text-lg text-secondary-container">12 <span class="text-sm font-medium text-on-surface-variant">units</span></div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded">Individual</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-primary font-medium">1 Pack = 6 Units</div>
+<div class="text-xs text-on-surface-variant italic">2 Packs + 0 Un</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+<span class="text-sm font-bold text-secondary-container">24 units</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:bg-primary hover:text-white p-2 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="kitchen">kitchen</span>
+</div>
+<div>
+<div class="font-label-bold text-primary">Brahma Chopp 600ml</div>
+<div class="text-xs text-on-surface-variant">SKU: BR-CHP-600</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-numeral-xl text-lg text-primary">156 <span class="text-sm font-medium text-on-surface-variant">units</span></div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded">Individual</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-primary font-medium">1 Crate = 12 Units</div>
+<div class="text-xs text-on-surface-variant italic">13 Crates + 0 Un</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm">36 units</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:bg-primary hover:text-white p-2 rounded transition-all">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface text-center">
+<button class="text-primary font-label-bold text-sm hover:underline">View All 1,248 Products</button>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-3 space-y-gutter">
+<div class="bg-primary text-white rounded-xl border border-primary shadow-lg overflow-hidden">
+<div class="p-5 border-b border-primary-container">
+<div class="flex justify-between items-start">
+<h3 class="font-label-bold uppercase tracking-widest text-xs opacity-70">Returns Tracking</h3>
+<span class="material-symbols-outlined text-secondary-container" data-icon="recycling">recycling</span>
+</div>
+<h2 class="text-2xl font-black mt-2">Vasilhames</h2>
+</div>
+<div class="p-5 space-y-4">
+<div class="bg-primary-container p-4 rounded-lg">
+<div class="text-[10px] uppercase font-bold text-on-primary-container mb-1">In Stock (Empty)</div>
+<div class="flex justify-between items-end">
+<span class="text-2xl font-numeral-xl">42</span>
+<span class="text-xs text-on-primary-container">Total Crates</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm border-b border-primary-container pb-2">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary-container"></span> 600ml Glass</span>
+<span class="font-bold">28 Crates</span>
+</div>
+<div class="flex justify-between items-center text-sm border-b border-primary-container pb-2">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-400"></span> 1L Litrão</span>
+<span class="font-bold">14 Crates</span>
+</div>
+<div class="flex justify-between items-center text-sm border-b border-primary-container pb-2">
+<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Mixed Small</span>
+<span class="font-bold">0 Crates</span>
+</div>
+</div>
+<button class="w-full bg-white text-primary py-3 rounded font-bold text-sm hover:bg-slate-100 transition-colors">
+                                Register Return
+                            </button>
+</div>
+</div>
+<div class="bg-white rounded-xl border border-outline-variant p-5 shadow-sm">
+<h3 class="font-label-bold text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="auto_awesome">auto_awesome</span>
+                            Automation Insights
+                        </h3>
+<div class="space-y-4">
+<div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-secondary-container">
+<p class="text-xs text-on-surface-variant mb-1 font-bold">SMART ORDER SUGGESTION</p>
+<p class="text-sm text-primary">Stock for <strong>Coca-Cola 2L</strong> will deplete in 2 days based on velocity. Order now?</p>
+<button class="mt-2 text-xs font-bold text-secondary-container hover:underline">CREATE PO #902</button>
+</div>
+<div class="p-3 bg-surface rounded-lg">
+<p class="text-xs text-on-surface-variant mb-1 font-bold">RECENT XML IMPORT</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Ambev Distribuidora</span>
+<span class="text-[10px] text-green-600 font-bold">SUCCESS</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-1">24 SKUs updated • 2 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant flex items-center justify-between overflow-hidden relative group">
+<div class="relative z-10 max-w-lg">
+<h3 class="font-headline-md text-primary mb-2">Automate your Workflow</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Connect your supplier's XML directly to RetailFlow. Automatically update prices, quantities, and generate return credit notes in seconds.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-white px-6 py-2 rounded font-label-bold">Configure API</button>
+<button class="text-primary font-label-bold border-b border-primary">Watch Tutorial</button>
+</div>
+</div>
+<div class="absolute right-[-40px] bottom-[-20px] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[300px]" data-icon="description">description</span>
+</div>
+<div class="hidden lg:block relative z-10">
+<div class="bg-white p-4 rounded-xl shadow-2xl border border-outline-variant w-64 rotate-3 group-hover:rotate-0 transition-transform">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-8 h-8 bg-secondary-container rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" data-icon="code">code</span>
+</div>
+<span class="text-xs font-bold text-primary">invoice_29384.xml</span>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-2 w-3/4 bg-slate-100 rounded"></div>
+<div class="h-2 w-5/6 bg-slate-100 rounded"></div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-100 flex justify-end">
+<div class="text-[10px] font-bold text-secondary-container">PROCESSING...</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

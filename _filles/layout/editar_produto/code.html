@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Edit - Ponto Direto POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#fd8b00",
+                      "on-primary-fixed-variant": "#374765",
+                      "surface-container-high": "#dce9ff",
+                      "primary-container": "#1a2b48",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#6e3900",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "on-surface-variant": "#44474d",
+                      "inverse-primary": "#b6c7eb",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed": "#ffdcc3",
+                      "on-tertiary-fixed-variant": "#41474e",
+                      "on-surface": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#4e5f7e",
+                      "primary": "#031632",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#262c32",
+                      "secondary-fixed-dim": "#ffb77d",
+                      "outline": "#75777e",
+                      "inverse-surface": "#213145",
+                      "tertiary-fixed": "#dde3eb",
+                      "on-background": "#0b1c30",
+                      "on-secondary-fixed": "#2f1500",
+                      "surface-container": "#e5eeff",
+                      "on-primary-container": "#8293b5",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#c1c7cf",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-primary-fixed": "#081b38",
+                      "surface": "#f8f9ff",
+                      "primary-fixed": "#d7e2ff",
+                      "on-secondary-container": "#603100",
+                      "on-tertiary-fixed": "#161c22",
+                      "surface-dim": "#cbdbf5",
+                      "secondary": "#904d00",
+                      "on-tertiary-container": "#8d939a",
+                      "outline-variant": "#c5c6ce",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#b6c7eb",
+                      "tertiary": "#11171d",
+                      "background": "#f8f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "touch-margin": "16px",
+                      "container-padding": "24px",
+                      "gutter": "20px",
+                      "target-min": "48px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "numeral-xl": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-price": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                      "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 w-64 bg-blue-950 border-r-2 border-blue-900">
+<div class="text-white font-bold px-4 py-6">
+<h1 class="text-lg font-black tracking-tighter">Ponto Direto POS</h1>
+</div>
+<div class="px-4 mb-6">
+<h2 class="text-white font-bold text-sm">Station 01</h2>
+<p class="text-blue-200 text-xs uppercase tracking-wider">Operator: Admin</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+                Sales Terminal
+            </a>
+<a class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 transition-transform scale-98 active:scale-95 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Product Manager
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">payments</span>
+                Payment Methods
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">warehouse</span>
+                Inventory
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Reports
+            </a>
+</nav>
+<div class="mt-auto px-2 flex flex-col gap-1">
+<button class="bg-orange-500 text-white font-bold py-3 rounded-md mx-2 mb-4 hover:bg-orange-600 transition-colors uppercase text-xs">
+                Close Cashier
+            </button>
+<a class="text-blue-200 hover:bg-blue-900 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 bg-white border-b-2 border-slate-100 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="text-lg font-black text-blue-900 tracking-tighter">Product Edit</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:bg-slate-50 transition-colors p-2 rounded-full">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:bg-slate-50 transition-colors p-2 rounded-full">account_circle</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:bg-slate-50 transition-colors p-2 rounded-full">settings</span>
+</div>
+</div>
+</header>
+<!-- Form Content -->
+<main class="p-touch-margin lg:p-container-padding flex-1 overflow-y-auto">
+<div class="max-w-5xl mx-auto">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Modify Product Details</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Update inventory specifications and pricing models.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-target-min font-label-bold text-label-bold border-2 border-outline-variant text-primary rounded-lg hover:bg-surface-container transition-all">
+                            Cancel
+                        </button>
+<button class="px-8 py-target-min font-label-bold text-label-bold bg-secondary-container text-white rounded-lg hover:brightness-110 shadow-md transition-all active:scale-95">
+                            Save Changes
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Basic Info Section -->
+<section class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-600">info</span>
+<h3 class="font-headline-md text-headline-md">Basic Info</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Product Name</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md" type="text" value="Premium Craft Beer - IPA 500ml"/>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">SKU / Barcode</label>
+<div class="relative">
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md pr-12" type="text" value="7891234567890"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline">barcode_scanner</span>
+</div>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Category</label>
+<select class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md appearance-none">
+<option>Beverages</option>
+<option>Food</option>
+<option>Alcoholic Drinks</option>
+<option>Tobacco</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Product Image/Preview (Decorative Bento Element) -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center relative overflow-hidden group">
+<img alt="Product preview" class="w-48 h-48 object-cover rounded-full border-4 border-white shadow-xl mb-4 z-10" data-alt="Close-up of a craft beer bottle with a minimalist label on a dark textured background with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_R1n_aEdMFUrOzkJmCKc0EulLc_V2G-4aROxZB7FvHL8T7fJWDMPcV34JUfrWWrtRWwiYd8hejipzhmTL-V8gO46rP_UEB3v44ttdUm4MVuimVNc8ETrD_iEP0xrCCMQgOmiRQpNrdRsEn0sYmbnDx9976A2FO2F9jaZ6iZBqcObRf0GvJ1eSC7m_uQqGulb1ic0Vya6EV690H35IAGo95kl1sBsigG0K1Q337wN2cKQs2_1fMDMhV-vqJ8veAVgP8u4Y7huDwuQ"/>
+<button class="z-10 bg-white text-primary px-4 py-2 rounded-full font-label-bold text-label-bold flex items-center gap-2 shadow-sm hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+                            Change Image
+                        </button>
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary-container to-transparent"></div>
+</section>
+<!-- Pricing Section -->
+<section class="col-span-12 lg:col-span-6 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-600">payments</span>
+<h3 class="font-headline-md text-headline-md">Pricing</h3>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex-1">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Cost Price ($)</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-numeral-xl text-headline-md" step="0.01" type="number" value="8.50"/>
+</div>
+<div class="flex-1">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Markup (%)</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-numeral-xl text-headline-md" type="number" value="45"/>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg border-2 border-dashed border-outline-variant">
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Final Sale Price</label>
+<div class="flex items-end gap-2">
+<span class="font-display-price text-display-price text-primary">$ 12.33</span>
+<span class="text-on-surface-variant mb-2 font-body-md">/ unit</span>
+</div>
+<p class="text-xs text-secondary font-label-bold mt-2">Expected Profit: $ 3.83 per unit</p>
+</div>
+</div>
+</section>
+<!-- Critical Volume Management -->
+<section class="col-span-12 lg:col-span-6 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-600">inventory</span>
+<h3 class="font-headline-md text-headline-md">Critical Volume</h3>
+</div>
+<div class="space-y-8">
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-4">Pack Composition</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface rounded-lg border-2 border-outline-variant flex items-center justify-between">
+<span class="font-body-md">Units per Case</span>
+<input class="w-16 bg-transparent border-none text-right font-numeral-xl text-headline-md focus:ring-0" type="number" value="12"/>
+</div>
+<div class="p-4 bg-surface rounded-lg border-2 border-outline-variant flex items-center justify-between">
+<span class="font-body-md">Units per Pack</span>
+<input class="w-16 bg-transparent border-none text-right font-numeral-xl text-headline-md focus:ring-0" type="number" value="6"/>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-900">recycling</span>
+<div>
+<p class="font-label-bold text-blue-900">Returnable Bottle Tracking</p>
+<p class="text-xs text-blue-700">Track and manage empty container deposits</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-600"></div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Min. Stock Alert</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-error" type="number" value="24"/>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Max. Capacity</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md" type="number" value="240"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Footer Mobile Only (Visible on small screens) -->
+<div class="mt-8 flex flex-col gap-3 lg:hidden">
+<button class="w-full py-target-min font-label-bold text-label-bold bg-secondary-container text-white rounded-lg shadow-md">
+                        Save Changes
+                    </button>
+<button class="w-full py-target-min font-label-bold text-label-bold border-2 border-outline-variant text-primary rounded-lg">
+                        Cancel
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

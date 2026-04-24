@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abertura de Caixa - Ponto Direto POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fd8b00",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#1a2b48",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#44474d",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed": "#ffdcc3",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4e5f7e",
+                        "primary": "#031632",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#262c32",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "outline": "#75777e",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#dde3eb",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed": "#2f1500",
+                        "surface-container": "#e5eeff",
+                        "on-primary-container": "#8293b5",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed": "#081b38",
+                        "surface": "#f8f9ff",
+                        "primary-fixed": "#d7e2ff",
+                        "on-secondary-container": "#603100",
+                        "on-tertiary-fixed": "#161c22",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#904d00",
+                        "on-tertiary-container": "#8d939a",
+                        "outline-variant": "#c5c6ce",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "tertiary": "#11171d",
+                        "background": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "touch-margin": "16px",
+                        "container-padding": "24px",
+                        "gutter": "20px",
+                        "target-min": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "numeral-xl": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "numeral-xl": ["36px", {"lineHeight": "54px", "fontWeight": "500"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        input:focus {
+            outline: none !important;
+            box-shadow: inset 0 0 0 1px #031632 !important;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar Fragmented into HTML based on JSON instruction -->
+<header class="bg-white dark:bg-slate-900 shadow-sm flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 border-b-2 border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Ponto Direto POS</h1>
+<div class="h-6 w-px bg-slate-200"></div>
+<span class="font-inter text-sm font-semibold tracking-tight text-slate-500 uppercase">Abertura de Caixa</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-touch-margin relative overflow-hidden">
+<!-- Industrial Background Decor -->
+<div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="2"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<!-- Central Entry Card -->
+<section class="bg-white w-full max-w-xl border border-outline-variant shadow-lg z-10 overflow-hidden">
+<!-- Card Header -->
+<div class="bg-primary px-8 py-6 text-white border-b-4 border-secondary-container">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md mb-1">Iniciar Operação</h2>
+<p class="text-on-primary-container text-sm opacity-90">Terminal T001 • Station 01</p>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-50" data-icon="point_of_sale">point_of_sale</span>
+</div>
+</div>
+<!-- Card Body -->
+<div class="p-8 space-y-gutter">
+<!-- Info Grid -->
+<div class="grid grid-cols-2 gap-gutter bg-surface-container-low p-4 border border-slate-200">
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase mb-1">Operador</label>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+<span>Admin / Gerente</span>
+</div>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant uppercase mb-1">Data e Hora</label>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>24 Out, 2023 - 08:30</span>
+</div>
+</div>
+</div>
+<!-- Input Field: Initial Cash Float -->
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-primary uppercase tracking-wider" for="cash-float">
+                        Fundo de Troca Inicial (R$)
+                    </label>
+<div class="relative group">
+<span class="absolute left-6 top-1/2 -translate-y-1/2 text-display-price font-display-price text-slate-400">R$</span>
+<input class="w-full bg-surface-bright border-2 border-slate-300 h-24 pl-24 pr-8 text-display-price font-display-price text-primary transition-all focus:border-primary placeholder:text-slate-200" id="cash-float" placeholder="0,00" type="number"/>
+</div>
+<p class="text-xs text-on-surface-variant">Insira o valor em espécie disponível na gaveta para troco.</p>
+</div>
+<!-- Numpad Helper (Mini for quick selection) -->
+<div class="grid grid-cols-4 gap-2">
+<button class="h-12 border border-slate-200 bg-surface hover:bg-slate-100 font-bold transition-colors">R$ 50</button>
+<button class="h-12 border border-slate-200 bg-surface hover:bg-slate-100 font-bold transition-colors">R$ 100</button>
+<button class="h-12 border border-slate-200 bg-surface hover:bg-slate-100 font-bold transition-colors">R$ 200</button>
+<button class="h-12 border border-slate-200 bg-surface hover:bg-slate-100 font-bold transition-colors">Limpar</button>
+</div>
+</div>
+<!-- Card Footer / Actions -->
+<div class="px-8 pb-8 flex gap-4">
+<button class="flex-1 h-target-min bg-secondary-container text-white font-label-bold text-body-lg uppercase tracking-widest hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                    Abrir Caixa
+                </button>
+</div>
+</section>
+<!-- Decorative Image for Industrial Context -->
+<div class="hidden lg:block absolute right-12 bottom-12 w-64 h-64 grayscale opacity-10">
+<img alt="Retail Checkout" class="w-full h-full object-cover" data-alt="Close up of a modern retail checkout station with a point of sale terminal in a clean industrial warehouse store" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD609GtliG7Sp_CQ0pJ7HgwvN2xSlbdcB_Dsevr7fFVn05N4RIHT_yWuUZssfFQHjld6q8x9150miJOjLY6TmdACXuBIiXRyyaccRnbe-ON0BHZ0iiI6zr-fhKZgeWu9SGYuylCj3rnEjkAS3uuoibVyGVit1UqsAv1NfQcnQAZhFN9-qBVwyjgoUpxxk_5XLq_jJrPQmV41eZuht0oJrM2VecEWnZ5CYr_Satas0TZZpfMIub0iB-tEFdz6ueBTaTzkK6yW4_jXAg"/>
+</div>
+</main>
+<!-- SideNavBar - Restricted but present as ghost shell for architectural integrity -->
+<nav class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-20 flex-col py-4 bg-primary z-40 border-r border-primary-container">
+<div class="flex flex-col items-center gap-6 mt-4">
+<div class="w-12 h-12 bg-secondary-container flex items-center justify-center rounded-md text-white shadow-lg cursor-pointer transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 opacity-30 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 opacity-30 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 opacity-30 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 opacity-30 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+</div>
+<div class="mt-auto flex flex-col items-center gap-6 mb-4">
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<div class="w-12 h-12 flex items-center justify-center text-blue-200 hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+</div>
+</nav>
+<!-- Bottom Status Bar -->
+<footer class="h-10 bg-slate-200 border-t border-slate-300 px-6 flex items-center justify-between text-[11px] font-label-bold uppercase text-slate-600 tracking-wider">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> Conectado</span>
+<span class="flex items-center gap-1">Servidor: 192.168.1.100</span>
+</div>
+<div>
+            Versão v2.4.0 Build 2023.10
+        </div>
+</footer>
+</body></html>
