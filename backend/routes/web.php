@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\Login;
+
+Route::prefix('login')->controller(Login::class)->group(function () {
+
+	Route::any('/', 'index');
+
+});
+
+Route::fallback(function () {
+	return redirect('login');
 });
