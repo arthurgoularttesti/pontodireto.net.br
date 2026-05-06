@@ -8,6 +8,8 @@ class Login extends Controller
 {
 	public function index (Request $request)
 	{
+		
+
 		return view('login');
 	}
 }
