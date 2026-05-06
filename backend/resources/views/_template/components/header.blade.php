@@ -1,7 +1,7 @@
 <!-- TopAppBar -->
 <header class="flex justify-between items-center h-16 px-6 w-full sticky top-0 z-40 bg-[#F8FAFC] border-b border-[#E2E8F0] flat no-shadows">
 	<div class="flex items-center gap-4">
-		<span class="text-xl font-black text-[#1A2B48] font-inter tracking-tight uppercase">RetailFlow POS</span>
+		<span class="text-xl font-black text-[#1A2B48] font-inter tracking-tight uppercase">{{ !empty(@$title) ? @$title : config('app.name') }}</span>
 		<div class="h-8 w-px bg-slate-200 mx-2"></div>
 		<div class="flex gap-6">
 			<span class="font-inter text-sm font-semibold tracking-tight text-orange-600 border-b-2 border-orange-600 cursor-pointer">DASHBOARD</span>
