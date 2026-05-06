@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ponto Direto POS - Gestão de Volumes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#cbdbf5",
+                        "primary-container": "#1a2b48",
+                        "on-secondary-fixed": "#2f1500",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "on-surface-variant": "#44474d",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#75777e",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "tertiary": "#11171d",
+                        "on-primary-fixed-variant": "#374765",
+                        "on-error": "#ffffff",
+                        "primary": "#031632",
+                        "primary-fixed": "#d7e2ff",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "surface": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "secondary-container": "#fd8b00",
+                        "inverse-surface": "#213145",
+                        "surface-container-high": "#dce9ff",
+                        "surface-tint": "#4e5f7e",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-fixed": "#ffdcc3",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "secondary": "#904d00",
+                        "surface-container": "#e5eeff",
+                        "on-surface": "#0b1c30",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#603100",
+                        "on-primary-fixed": "#081b38",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-fixed": "#161c22",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "outline-variant": "#c5c6ce",
+                        "on-primary-container": "#8293b5",
+                        "tertiary-container": "#262c32",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#8d939a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "touch-margin": "16px",
+                        "target-min": "48px",
+                        "base": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "numeral-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-item {
+            background-color: #ea580c; /* orange-600 */
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 w-64 border-r-2 border-blue-900 bg-blue-950">
+<div class="text-white font-bold px-4 py-6 font-inter text-lg">
+            Ponto Direto POS
+        </div>
+<nav class="flex-grow space-y-1">
+<div class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md cursor-pointer transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined">point_of_sale</span>
+                Sales Terminal
+            </div>
+<div class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined">inventory_2</span>
+                Product Manager
+            </div>
+<div class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md cursor-pointer transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined">payments</span>
+                Payment Methods
+            </div>
+<div class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md cursor-pointer transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined">warehouse</span>
+                Inventory
+            </div>
+<div class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md cursor-pointer transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined">analytics</span>
+                Reports
+            </div>
+</nav>
+<div class="mt-auto px-4 py-4 space-y-4">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary font-bold">A</div>
+<div>
+<p class="text-white text-xs font-bold">Station 01</p>
+<p class="text-blue-300 text-[10px]">Operator: Admin</p>
+</div>
+</div>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container font-label-bold rounded-lg text-sm hover:opacity-90 transition-opacity">
+                Close Cashier
+            </button>
+<div class="pt-4 border-t border-blue-900 space-y-1">
+<div class="text-blue-200 hover:bg-blue-900 px-4 py-2 flex items-center gap-3 rounded-md cursor-pointer text-xs font-medium uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">help</span>
+                    Support
+                </div>
+<div class="text-blue-200 hover:bg-blue-900 px-4 py-2 flex items-center gap-3 rounded-md cursor-pointer text-xs font-medium uppercase tracking-wider text-error">
+<span class="material-symbols-outlined text-sm">logout</span>
+                    Logout
+                </div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 bg-white shadow-sm border-b-2 border-slate-100">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-50 p-2 rounded-full cursor-pointer transition-all">arrow_back</button>
+<h1 class="font-headline-md text-primary tracking-tight">Gestão de Volumes e Embalagens</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 text-slate-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">account_circle</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">settings</span>
+</div>
+</div>
+</header>
+<div class="p-container-padding space-y-gutter">
+<!-- Product Info Header (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm flex items-start gap-6">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden shrink-0 border border-outline-variant">
+<img alt="Product Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhdzN--ABX20yEXdRExNirbYPl9b4G-3I_FFZ0nQ8vTO6_lY_dprYVfiayfcwrskobNEInvNLj-rbs3oxYlXYdnLb9BJueekQY3yD66j6AskGvNzv2BmAD6NDdTg7o4XMhx79w0Fov8R1t1lUA6QWXc82taP5ZfOIlVvSyqOp7L_DdnC9J_RmqTaJVjyUiDFKLNBWmLvSR1yIVkuXqPFIvJSYYSFPSrcAgzeDAiPie4dlan8wgjkVIlwnQ"/>
+</div>
+<div class="space-y-2">
+<span class="px-2 py-1 bg-surface-container text-primary text-[10px] font-bold uppercase rounded tracking-wider">SKU: CRT-IPA-500</span>
+<h2 class="font-headline-lg text-primary">Cerveja Artesanal IPA 500ml</h2>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">inventory</span>
+<span class="text-sm font-medium">Unidade Base: <strong class="text-primary">Unidade (UN)</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">sell</span>
+<span class="text-sm font-medium">Preço Unitário: <strong class="text-primary">R$ 18,50</strong></span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-primary text-white p-6 rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<p class="text-xs font-bold uppercase tracking-[0.2em] opacity-70">Status do Estoque</p>
+<p class="text-headline-lg font-black mt-1">1.240 UN</p>
+<p class="text-[11px] mt-2 bg-white/10 inline-block px-2 py-1 rounded">Equivale a ~51 Caixas (x24)</p>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+</div>
+</div>
+</div>
+<!-- Main Management Split -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Add Volume Form (Industrial Input Style) -->
+<div class="lg:col-span-1 space-y-gutter">
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl overflow-hidden">
+<div class="bg-primary px-6 py-4">
+<h3 class="text-white font-label-bold flex items-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                                Novo Volume
+                            </h3>
+</div>
+<div class="p-6 space-y-5">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-primary tracking-wider">Volume Name</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded-lg p-3 font-body-md h-target-min transition-all" placeholder="Ex: Fardo, Pallet, Caixa" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-primary tracking-wider">Fator de Conversão</label>
+<div class="relative">
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded-lg p-3 pr-10 font-numeral-xl h-target-min transition-all" type="number" value="1"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold text-xs">UN</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-primary tracking-wider">Sigla</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded-lg p-3 font-body-md h-target-min transition-all" placeholder="CX" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-primary tracking-wider">SKU do Volume</label>
+<div class="flex gap-2">
+<input class="flex-grow border-2 border-outline-variant focus:border-primary focus:ring-0 rounded-lg p-3 font-body-md h-target-min transition-all" placeholder="Código de Barras ou Interno" type="text"/>
+<button class="material-symbols-outlined bg-surface-container p-2 rounded-lg text-primary border-2 border-outline-variant hover:bg-surface-variant transition-colors">barcode_scanner</button>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase text-on-surface-variant">Peso (kg)</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded p-2 text-sm transition-all" placeholder="0.00" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase text-on-surface-variant">Larg (cm)</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded p-2 text-sm transition-all" placeholder="0" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase text-on-surface-variant">Alt (cm)</label>
+<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 rounded p-2 text-sm transition-all" placeholder="0" type="text"/>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container h-target-min rounded-lg font-label-bold flex items-center justify-center gap-2 hover:bg-orange-500 transition-colors shadow-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined">save</span>
+                                ADICIONAR VOLUME
+                            </button>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant">
+<h4 class="text-xs font-black text-primary uppercase tracking-tighter mb-3">Dica de Logística</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Configurar volumes corretamente facilita a entrada de NF-e via XML e o picking no armazém. Use códigos de barras únicos para cada nível de embalagem.</p>
+</div>
+</div>
+<!-- Volume List (Transaction Style Table/Cards) -->
+<div class="lg:col-span-2 space-y-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<h3 class="font-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+                                Gestão de Volumes
+                            </h3>
+<div class="flex items-center gap-2 text-xs font-bold text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+                                3 Configurações Ativas
+                            </div>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded bg-primary-container text-white flex items-center justify-center font-black">x12</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-md text-primary">Fardo Plástico</h4>
+<span class="px-2 py-0.5 bg-surface-variant text-primary text-[10px] font-bold rounded">UNIDADES POR VOLUME: 12</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">SKU: 7890123456789</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Preço Proporcional</p>
+<p class="text-headline-md text-primary font-bold">R$ 222,00</p>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">fitness_center</span> 6.2 kg
+                                        </div>
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">square_foot</span> 40x25x20cm
+                                        </div>
+</div>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary hover:text-white rounded-lg transition-all border border-primary">edit</button>
+<button class="material-symbols-outlined p-2 text-error hover:bg-error hover:text-white rounded-lg transition-all border border-error">delete</button>
+</div>
+</div>
+<!-- Visual Cost Indicator -->
+<div class="mt-4 pt-4 border-t border-dashed border-outline-variant">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Eficiência de Custo por Unidade</span>
+<span class="text-[10px] font-bold text-secondary">R$ 18,50 / UN</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded bg-primary-container text-white flex items-center justify-center font-black">x24</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-md text-primary">Caixa Master</h4>
+<span class="px-2 py-0.5 bg-surface-variant text-primary text-[10px] font-bold rounded">UNIDADES POR VOLUME: 24</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">SKU: 7890123456800</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Preço Proporcional</p>
+<p class="text-headline-md text-secondary font-black">R$ 432,00</p>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">fitness_center</span> 12.5 kg
+                                        </div>
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">square_foot</span> 50x30x25cm
+                                        </div>
+</div>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary hover:text-white rounded-lg transition-all border border-primary">edit</button>
+<button class="material-symbols-outlined p-2 text-error hover:bg-error hover:text-white rounded-lg transition-all border border-error">delete</button>
+</div>
+</div>
+<!-- Visual Cost Indicator (Showing discount) -->
+<div class="mt-4 pt-4 border-t border-dashed border-outline-variant">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Eficiência de Custo por Unidade (Atacado -3%)</span>
+<span class="text-[10px] font-bold text-green-600">R$ 18,00 / UN</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-green-500" style="width: 97%"></div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded bg-primary-container text-white flex items-center justify-center font-black">xP</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-md text-primary">Pallet Industrial</h4>
+<span class="px-2 py-0.5 bg-surface-variant text-primary text-[10px] font-bold rounded">UNIDADES POR VOLUME: 2880</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">SKU: PAL-IPA-BEER-01</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Preço Proporcional</p>
+<p class="text-headline-md text-primary font-bold">R$ 48.960,00</p>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-3">
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">fitness_center</span> 1,440 kg
+                                        </div>
+<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">square_foot</span> 120x100x160cm
+                                        </div>
+</div>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary hover:text-white rounded-lg transition-all border border-primary">edit</button>
+<button class="material-symbols-outlined p-2 text-error hover:bg-error hover:text-white rounded-lg transition-all border border-error">delete</button>
+</div>
+</div>
+<!-- Visual Cost Indicator (High efficiency) -->
+<div class="mt-4 pt-4 border-t border-dashed border-outline-variant">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Eficiência de Custo por Unidade (Atacado -8%)</span>
+<span class="text-[10px] font-bold text-green-600">R$ 17,00 / UN</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-green-500" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Summary/Warehouse Image Card -->
+<div class="relative h-64 w-full rounded-xl overflow-hidden group shadow-lg">
+<img alt="Warehouse Logic" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A clean, highly organized modern industrial warehouse with high-contrast lighting. Stacks of palettes with craft beer cases are neatly arranged on heavy-duty steel shelving. The aesthetic is professional and efficient, using a palette of deep navy blue shadows and bright industrial orange safety markings. High-key light-mode atmosphere with pristine concrete floors reflecting the overhead warehouse lighting." src="https://lh3.googleusercontent.com/aida/ADBb0uhRJZ93VuSN6Xf0Lf7tJ2lmq9G9yihetHI2-LBj1JMMSEJEgTZei6WUbe90s0ysaABNxd_xkD0CEVi31NPM2D5mm8_lAUbZtTiG21BxV8fHt1tOkPj1976sn1NFqsCE5mRN2toJy-t2xDextpXWrXzflDIBABV-WTR3qTsdjBO388F_N55iHlmUCxA11ygPUZQsdGnY37y-zV0h2V-45g0wcRuydQsf8hN6tehSVj5rHn25I9YSZW643So"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex items-end p-8">
+<div>
+<h4 class="text-white font-headline-md">Automação de Estoque</h4>
+<p class="text-blue-100 text-sm max-w-md">Ao vender uma 'Caixa x24', o sistema deduz automaticamente 24 unidades do saldo base de 'Unidade (UN)'.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for quick action (Only for top-level pages usually, but kept for context here) -->
+<!-- Suppressed based on UI Designer rules for Details/Settings focus -->
+</body></html>
