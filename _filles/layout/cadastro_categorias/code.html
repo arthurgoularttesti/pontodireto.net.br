@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro de Categorias - Ponto Direto POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdcc3",
+                        "tertiary": "#11171d",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "on-tertiary-container": "#8d939a",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#dde3eb",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "secondary": "#904d00",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#8293b5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-tint": "#4e5f7e",
+                        "outline-variant": "#c5c6ce",
+                        "background": "#f8f9ff",
+                        "on-secondary-container": "#603100",
+                        "on-primary-fixed-variant": "#374765",
+                        "on-tertiary-fixed": "#161c22",
+                        "primary-container": "#1a2b48",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary": "#031632",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#262c32",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d7e2ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-container": "#fd8b00",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#75777e",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "on-surface-variant": "#44474d",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-fixed": "#081b38",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#2f1500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "target-min": "48px",
+                        "touch-margin": "16px",
+                        "container-padding": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-price": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "numeral-xl": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Container -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 w-64 border-r-2 border-blue-900 bg-blue-950">
+<div class="text-white font-bold px-4 py-6 text-xl tracking-tighter">
+            PONTO DIRETO
+        </div>
+<div class="px-4 mb-6">
+<p class="text-blue-200 text-[11px] uppercase tracking-widest font-bold opacity-60">Station 01</p>
+<p class="text-white text-[13px] font-medium">Operator: Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+                Sales Terminal
+            </a>
+<!-- Active State: Product Manager implies Categories -->
+<a class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 font-inter text-[13px] font-medium uppercase tracking-wider scale-98 active:scale-95 cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                Product Manager
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                Payment Methods
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+                Inventory
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Reports
+            </a>
+</nav>
+<div class="mt-auto border-t border-blue-900 pt-4">
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+<div class="px-2 mt-4">
+<button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-md text-[13px] uppercase tracking-widest transition-all">
+                    Close Cashier
+                </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 bg-white border-b-2 border-slate-100 shadow-sm">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-black text-blue-900 tracking-tighter">Ponto Direto POS</h1>
+<div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+<div class="text-slate-500 font-inter text-sm font-semibold tracking-tight">Cadastro de Categorias</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-orange-500">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhRJZ93VuSN6Xf0Lf7tJ2lmq9G9yihetHI2-LBj1JMMSEJEgTZei6WUbe90s0ysaABNxd_xkD0CEVi31NPM2D5mm8_lAUbZtTiG21BxV8fHt1tOkPj1976sn1NFqsCE5mRN2toJy-t2xDextpXWrXzflDIBABV-WTR3qTsdjBO388F_N55iHlmUCxA11ygPUZQsdGnY37y-zV0h2V-45g0wcRuydQsf8hN6tehSVj5rHn25I9YSZW643So"/>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-900">expand_more</span>
+</button>
+<!-- User Dropdown Menu -->
+<div class="absolute right-0 top-full mt-2 w-48 bg-white border border-slate-200 shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined text-slate-400" data-icon="person">person</span>
+                            Editar Perfil
+                        </a>
+<div class="h-[1px] bg-slate-100 my-1"></div>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-error hover:bg-error-container" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                            Sair
+                        </a>
+</div>
+</div>
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-50 p-2 rounded-lg transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-50 p-2 rounded-lg transition-colors" data-icon="settings">settings</button>
+</div>
+</header>
+<!-- Content Area -->
+<section class="p-8 max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Gerenciamento de Categorias</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Organize seu catálogo de produtos para facilitar o atendimento.</p>
+</div>
+<button class="flex items-center gap-2 bg-secondary-container hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Adicionar Categoria
+                </button>
+</div>
+<!-- Dashboard Style Content Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Categories Table Container -->
+<div class="col-span-12 lg:col-span-8 bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+<span class="font-label-bold text-label-bold text-primary uppercase tracking-wider">Categorias Ativas</span>
+<div class="flex bg-white border border-slate-200 rounded-md px-3 py-1.5">
+<span class="material-symbols-outlined text-slate-400 text-lg mr-2" data-icon="search">search</span>
+<input class="border-none p-0 text-sm focus:ring-0 w-48" placeholder="Filtrar categorias..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-100">
+<th class="px-6 py-4 font-label-bold text-label-bold text-slate-500">NOME DA CATEGORIA</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-slate-500">PRODUTOS</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-slate-500">STATUS</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-slate-500 text-right">AÇÕES</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1: Bebidas -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined" data-icon="local_bar">local_bar</span>
+</div>
+<span class="font-bold text-primary">Bebidas</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-medium">42 itens</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-tighter">Ativo</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-blue-50 text-blue-950 rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-orange-50 text-orange-600 rounded-lg transition-all" title="Excluir">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Petiscos -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-900">
+<span class="material-symbols-outlined" data-icon="fastfood">fastfood</span>
+</div>
+<span class="font-bold text-primary">Petiscos</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-medium">28 itens</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-tighter">Ativo</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-blue-50 text-blue-950 rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-orange-50 text-orange-600 rounded-lg transition-all" title="Excluir">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Confeitaria -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-pink-100 flex items-center justify-center text-pink-600">
+<span class="material-symbols-outlined" data-icon="cake">cake</span>
+</div>
+<span class="font-bold text-primary">Confeitaria</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-medium">15 itens</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold rounded-full uppercase tracking-tighter">Pendente</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-blue-50 text-blue-950 rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-orange-50 text-orange-600 rounded-lg transition-all" title="Excluir">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Mercearia -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<span class="font-bold text-primary">Mercearia</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-medium">104 itens</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-tighter">Ativo</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-blue-50 text-blue-950 rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-orange-50 text-orange-600 rounded-lg transition-all" title="Excluir">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Sidebar for Category Stats/Quick Info -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Stats Card -->
+<div class="bg-primary-container text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-label-bold text-label-bold uppercase tracking-widest opacity-80 mb-2">Total de Categorias</h3>
+<div class="font-display-price text-display-price leading-none mb-4">12</div>
+<div class="flex items-center gap-2 text-green-400 text-sm font-bold">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+                                +2 novas este mês
+                            </div>
+</div>
+<span class="material-symbols-outlined absolute right-[-20px] bottom-[-20px] text-[120px] opacity-10 rotate-12" data-icon="category">category</span>
+</div>
+<!-- Category Help/Tips Card -->
+<div class="bg-white rounded-xl border border-outline-variant p-6">
+<h3 class="font-headline-md text-body-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-500" data-icon="lightbulb">lightbulb</span>
+                            Dica de Organização
+                        </h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+                            Mantenha no máximo 15 categorias para garantir que seus operadores encontrem os produtos rapidamente no terminal de vendas.
+                        </p>
+<div class="rounded-lg overflow-hidden h-32 relative group">
+<img alt="Workspace organization" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uhdzN--ABX20yEXdRExNirbYPl9b4G-3I_FFZ0nQ8vTO6_lY_dprYVfiayfcwrskobNEInvNLj-rbs3oxYlXYdnLb9BJueekQY3yD66j6AskGvNzv2BmAD6NDdTg7o4XMhx79w0Fov8R1t1lUA6QWXc82taP5ZfOIlVvSyqOp7L_DdnC9J_RmqTaJVjyUiDFKLNBWmLvSR1yIVkuXqPFIvJSYYSFPSrcAgzeDAiPie4dlan8wgjkVIlwnQ"/>
+<div class="absolute inset-0 bg-blue-950/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-white text-xs font-bold uppercase tracking-widest">Ver Guia Completo</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 p-6">
+<h4 class="font-label-bold text-label-bold text-slate-500 uppercase mb-4">Ações Rápidas</h4>
+<div class="space-y-2">
+<button class="w-full flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg hover:border-orange-400 transition-colors text-sm font-medium">
+                                Exportar PDF
+                                <span class="material-symbols-outlined text-slate-400" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg hover:border-orange-400 transition-colors text-sm font-medium">
+                                Reordenar Categorias
+                                <span class="material-symbols-outlined text-slate-400" data-icon="reorder">reorder</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

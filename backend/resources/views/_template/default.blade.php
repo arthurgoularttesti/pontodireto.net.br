@@ -104,12 +104,14 @@
 </head>
 <body class="bg-background text-on-background antialiased flex">
 	
-	@include('_template.components.sidebar')
+	@include('_template.components.sidebar', [
+		'title'		=> @$title,
+	])
 	<!-- Main Content Area -->
 	<main class="flex-1 ml-64 min-h-screen">
 	
 		@include('_template.components.header', [
-		'title'		=> @$title,
+			'title'		=> @$title,
 		])
 
 		@yield('content')
