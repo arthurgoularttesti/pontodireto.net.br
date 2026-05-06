@@ -10,7 +10,10 @@ class ProductController extends Controller
 {
 	public function index (Request $request)
 	{
-
+		return view('product_list', [
+			'title'			=> 'Lista de Produtos',
+			'description'	=> 'Gerencie seus níveis de estoque e automatize o processo de compras.',
+		]);
 	}
 
 	public function create (Request $request)

@@ -8,31 +8,29 @@
 		</div>
 	</div>
 	<nav class="flex-1 space-y-1">
-		<a class="bg-orange-600 text-white rounded-r-full mr-4 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
-			<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-			<span class="font-inter text-[14px] font-medium">Dashboard</span>
-		</a>
-		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
-			<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
-			<span class="font-inter text-[14px] font-medium">PDV Fast</span>
-		</a>
-		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
-			<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
-			<span class="font-inter text-[14px] font-medium">Inventory</span>
-		</a>
-		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
-			<span class="material-symbols-outlined" data-icon="lock_clock">lock_clock</span>
-			<span class="font-inter text-[14px] font-medium">Cash Closing</span>
-		</a>
+
+		@foreach (config('menu') as $menu)
+
+			<a class="{{ request()->segment(1) == $menu->route ? 'bg-orange-600' : '' }} text-white rounded-r-full mr-4 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="{{ route($menu->route) }}">
+
+				@if (!empty($menu->icon))
+
+					<span class="material-symbols-outlined" data-icon="dashboard">{{ $menu->icon }}</span>
+				@endif
+
+				<span class="font-inter text-[14px] font-medium">{!! $menu->label !!}</span>
+			</a>
+
+		@endforeach
 	</nav>
 	<div class="mt-auto px-2 space-y-1">
-		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
+		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="mailto:arthurgoulart@gmail.com">
 			<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
-			<span class="font-inter text-[14px] font-medium">Support</span>
+			<span class="font-inter text-[14px] font-medium">Suporte Técnico</span>
 		</a>
-		<a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
+		<!-- <a class="text-slate-300 hover:text-white hover:bg-[#2A3B58] px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
 			<span class="material-symbols-outlined" data-icon="logout">logout</span>
 			<span class="font-inter text-[14px] font-medium">Logout</span>
-		</a>
+		</a> -->
 	</div>
 </aside>
