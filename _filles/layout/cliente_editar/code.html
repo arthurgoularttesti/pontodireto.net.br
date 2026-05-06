@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#081b38",
+                      "secondary-container": "#fd8b00",
+                      "surface-container": "#e5eeff",
+                      "surface-tint": "#4e5f7e",
+                      "on-primary": "#ffffff",
+                      "secondary": "#904d00",
+                      "primary": "#031632",
+                      "surface-dim": "#cbdbf5",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed-variant": "#374765",
+                      "primary-container": "#1a2b48",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#8293b5",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#ffb77d",
+                      "on-secondary-container": "#603100",
+                      "secondary-fixed": "#ffdcc3",
+                      "inverse-primary": "#b6c7eb",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#d7e2ff",
+                      "surface": "#f8f9ff",
+                      "primary-fixed-dim": "#b6c7eb",
+                      "on-tertiary-fixed": "#161c22",
+                      "outline": "#75777e",
+                      "inverse-surface": "#213145",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-fixed": "#dde3eb",
+                      "tertiary-container": "#262c32",
+                      "on-tertiary-fixed-variant": "#41474e",
+                      "on-surface-variant": "#44474d",
+                      "on-surface": "#0b1c30",
+                      "on-secondary-fixed-variant": "#6e3900",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#8d939a",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#c1c7cf",
+                      "inverse-on-surface": "#eaf1ff",
+                      "outline-variant": "#c5c6ce",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary-fixed": "#2f1500",
+                      "tertiary": "#11171d",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "target-min": "48px",
+                      "touch-margin": "16px",
+                      "container-padding": "24px",
+                      "gutter": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-price": ["Inter"],
+                      "body-md": ["Inter"],
+                      "numeral-xl": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                      "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation Anchor (Shared Component Execution) -->
+<header class="bg-white dark:bg-slate-900 shadow-sm flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 border-b-2 border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<span class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Ponto Direto POS</span>
+<div class="h-6 w-px bg-slate-200 mx-2"></div>
+<h1 class="font-headline-md text-headline-md text-primary">Editar Cliente</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 border-2 border-primary text-primary font-label-bold text-label-bold rounded hover:bg-slate-50 transition-all active:scale-95">
+                Cancelar
+            </button>
+<button class="px-6 py-2 bg-secondary-container text-white font-label-bold text-label-bold rounded hover:opacity-90 shadow-md transition-all active:scale-95">
+                Salvar Alterações
+            </button>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar (Shared Component Execution) -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 bg-blue-950 dark:bg-black w-64 border-r-2 border-blue-900">
+<div class="text-white font-bold px-4 py-6 mb-4">
+<div class="text-headline-md font-inter tracking-tight">Station 01</div>
+<div class="text-[11px] opacity-60 uppercase tracking-widest">Operator: Admin</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+                    Sales Terminal
+                </a>
+<a class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 transition-transform font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Clientes
+                </a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Product Manager
+                </a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Payment Methods
+                </a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">warehouse</span>
+                    Inventory
+                </a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Reports
+                </a>
+</nav>
+<div class="mt-auto border-t border-blue-900 pt-4 px-2 space-y-1">
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md font-inter text-[13px] font-medium uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<button class="w-full bg-orange-600 text-white font-bold py-3 px-4 rounded-md mt-4 hover:bg-orange-700 transition-colors uppercase text-xs tracking-widest">
+                    Close Cashier
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 overflow-y-auto bg-surface p-base">
+<div class="max-w-6xl mx-auto grid grid-cols-12 gap-gutter py-container-padding">
+<!-- Form Section -->
+<div class="col-span-8 space-y-gutter">
+<!-- General Information -->
+<section class="bg-white p-container-padding rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+<span class="material-symbols-outlined text-primary">person</span>
+<h2 class="font-headline-md text-headline-md text-on-background">Informações Gerais</h2>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="col-span-2">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Nome Completo</label>
+<input class="w-full h-target-min px-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright" type="text" value="Ricardo Santos Oliveira"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Documento / CPF</label>
+<input class="w-full h-target-min px-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright" type="text" value="123.456.789-00"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Telefone</label>
+<input class="w-full h-target-min px-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright" type="tel" value="(11) 98765-4321"/>
+</div>
+<div class="col-span-2">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">E-mail</label>
+<input class="w-full h-target-min px-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright" type="email" value="ricardo.oliveira@email.com"/>
+</div>
+<div class="col-span-2">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Endereço</label>
+<textarea class="w-full px-4 py-3 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright" rows="3">Rua das Flores, 123 - Apt 42, Bairro Jardim, São Paulo - SP</textarea>
+</div>
+</div>
+</section>
+<!-- Credit Settings -->
+<section class="bg-white p-container-padding rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<h2 class="font-headline-md text-headline-md text-on-background">Configurações de Crédito (Caderneta)</h2>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-bold font-label-bold text-on-surface-variant">Limite de Crédito Ativo</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Limite Máximo (R$)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">R$</span>
+<input class="w-full h-target-min pl-12 pr-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-white font-numeral-xl text-numeral-xl" type="number" value="1500.00"/>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Saldo Atual devedor</label>
+<div class="h-target-min flex items-center px-4 font-numeral-xl text-numeral-xl text-error">
+                                    R$ 342,50
+                                </div>
+</div>
+<div class="col-span-2">
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-2">Condições de Pagamento</label>
+<select class="w-full h-target-min px-4 border-2 border-outline-variant rounded focus:border-primary focus:ring-0 transition-colors bg-surface-bright">
+<option>Pagamento Mensal (Todo dia 05)</option>
+<option>Pagamento Quinzenal</option>
+<option selected="">Pagamento Semanal (Sexta-feira)</option>
+<option>Fluxo Aberto</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Purchase History Summary -->
+<section class="bg-white p-container-padding rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+<h2 class="font-headline-md text-headline-md text-on-background">Resumo de Compras</h2>
+</div>
+<button class="text-primary font-label-bold text-label-bold flex items-center gap-1 hover:underline">
+                                Ver histórico completo <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-outline-variant">
+<tr>
+<th class="py-3 px-4 text-label-bold font-label-bold text-on-surface-variant">Data</th>
+<th class="py-3 px-4 text-label-bold font-label-bold text-on-surface-variant">ID Pedido</th>
+<th class="py-3 px-4 text-label-bold font-label-bold text-on-surface-variant">Itens</th>
+<th class="py-3 px-4 text-label-bold font-label-bold text-on-surface-variant">Valor Total</th>
+<th class="py-3 px-4 text-label-bold font-label-bold text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50">
+<td class="py-4 px-4 text-body-md font-body-md">12/05/2024</td>
+<td class="py-4 px-4 text-body-md font-body-md font-mono text-primary">#ORD-9821</td>
+<td class="py-4 px-4 text-body-md font-body-md">4 itens</td>
+<td class="py-4 px-4 text-body-md font-body-md font-bold">R$ 156,90</td>
+<td class="py-4 px-4">
+<span class="px-3 py-1 bg-green-100 text-green-800 text-[11px] font-bold uppercase rounded-full">Pago</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-4 px-4 text-body-md font-body-md">08/05/2024</td>
+<td class="py-4 px-4 text-body-md font-body-md font-mono text-primary">#ORD-9754</td>
+<td class="py-4 px-4 text-body-md font-body-md">2 itens</td>
+<td class="py-4 px-4 text-body-md font-body-md font-bold text-orange-600">R$ 42,50</td>
+<td class="py-4 px-4">
+<span class="px-3 py-1 bg-orange-100 text-orange-800 text-[11px] font-bold uppercase rounded-full">Na Caderneta</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-4 px-4 text-body-md font-body-md">05/05/2024</td>
+<td class="py-4 px-4 text-body-md font-body-md font-mono text-primary">#ORD-9712</td>
+<td class="py-4 px-4 text-body-md font-body-md">12 itens</td>
+<td class="py-4 px-4 text-body-md font-body-md font-bold">R$ 300,00</td>
+<td class="py-4 px-4">
+<span class="px-3 py-1 bg-orange-100 text-orange-800 text-[11px] font-bold uppercase rounded-full">Na Caderneta</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Sidebar Summary Section -->
+<div class="col-span-4 space-y-gutter">
+<div class="bg-primary-container text-white p-container-padding rounded-lg shadow-lg sticky top-20">
+<div class="flex items-center gap-4 mb-8">
+<img alt="Profile Avatar" class="w-16 h-16 rounded-full border-2 border-secondary-container object-cover" data-alt="A professional studio portrait of a friendly middle-aged male customer with a warm smile, wearing a casual polo shirt. The lighting is soft and flattering, emphasizing a bright and welcoming atmosphere. The background is a clean, neutral gradient of light blue and white, reflecting a modern industrial and trustworthy corporate UI style. The image has high resolution and sharp focus." src="https://lh3.googleusercontent.com/aida/ADBb0uhdzN--ABX20yEXdRExNirbYPl9b4G-3I_FFZ0nQ8vTO6_lY_dprYVfiayfcwrskobNEInvNLj-rbs3oxYlXYdnLb9BJueekQY3yD66j6AskGvNzv2BmAD6NDdTg7o4XMhx79w0Fov8R1t1lUA6QWXc82taP5ZfOIlVvSyqOp7L_DdnC9J_RmqTaJVjyUiDFKLNBWmLvSR1yIVkuXqPFIvJSYYSFPSrcAgzeDAiPie4dlan8wgjkVIlwnQ"/>
+<div>
+<h3 class="font-headline-md text-headline-md leading-tight">Ricardo Santos</h3>
+<span class="px-2 py-0.5 bg-green-500 text-white text-[10px] font-black uppercase rounded tracking-widest">Cliente VIP</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="border-l-4 border-secondary-container pl-4">
+<p class="text-on-primary-container text-label-bold font-label-bold uppercase tracking-wider mb-1">Total Gasto</p>
+<p class="text-display-price font-display-price">R$ 14.520</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-on-primary-container text-[11px] font-bold uppercase tracking-wider mb-1">Última Compra</p>
+<p class="font-headline-md text-headline-md">12 Mai</p>
+</div>
+<div>
+<p class="text-on-primary-container text-[11px] font-bold uppercase tracking-wider mb-1">Frequência</p>
+<p class="font-headline-md text-headline-md">Semanal</p>
+</div>
+</div>
+<div class="pt-6 border-t border-white/10 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-primary-container text-body-md font-body-md">Status da Conta</span>
+<span class="font-bold text-green-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Ativo
+                                    </span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-primary-container text-body-md font-body-md">Score de Crédito</span>
+<span class="font-bold text-secondary-container">Excelente (92)</span>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<div class="bg-white/5 rounded-lg p-4 border border-white/10">
+<p class="text-[11px] font-bold uppercase text-on-primary-container mb-3 tracking-widest">Ações Rápidas</p>
+<div class="flex flex-col gap-2">
+<button class="w-full py-3 bg-white text-primary font-label-bold text-label-bold rounded flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined">receipt_long</span> Emitir Extrato
+                                    </button>
+<button class="w-full py-3 border border-white/20 text-white font-label-bold text-label-bold rounded flex items-center justify-center gap-2 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">payments</span> Registrar Pagamento
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Location Insight -->
+<div class="bg-white p-container-padding rounded-lg border border-outline-variant shadow-sm overflow-hidden">
+<p class="text-label-bold font-label-bold text-on-surface-variant mb-4 flex items-center gap-2 uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span> Localização do Cliente
+                        </p>
+<div class="h-48 w-full rounded bg-slate-100 relative mb-4">
+<img class="w-full h-full object-cover rounded" data-alt="A detailed digital map interface displaying a suburban neighborhood grid with a prominent blue location pin marking a specific address. The map uses a clean, industrial-inspired color palette with shades of navy blue, soft greys, and white. The aesthetic is professional and modern, designed for a business dashboard. Streets are clearly labeled with crisp typography, and the overall mood is technical and efficient." src="https://lh3.googleusercontent.com/aida/ADBb0uhRJZ93VuSN6Xf0Lf7tJ2lmq9G9yihetHI2-LBj1JMMSEJEgTZei6WUbe90s0ysaABNxd_xkD0CEVi31NPM2D5mm8_lAUbZtTiG21BxV8fHt1tOkPj1976sn1NFqsCE5mRN2toJy-t2xDextpXWrXzflDIBABV-WTR3qTsdjBO388F_N55iHlmUCxA11ygPUZQsdGnY37y-zV0h2V-45g0wcRuydQsf8hN6tehSVj5rHn25I9YSZW643So"/>
+</div>
+<p class="text-body-md font-body-md text-on-background text-center italic">
+                            "Próximo ao Terminal Central - Entrega Preferencial"
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

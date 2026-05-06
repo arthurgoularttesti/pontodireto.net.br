@@ -1,7 +1,7 @@
 <!-- SideNavBar -->
 <aside class="h-screen w-64 fixed left-0 top-0 bg-[#1A2B48] text-white flex flex-col h-full pt-4 pb-8 border-r border-slate-700 shadow-xl z-50">
 	<div class="px-2 mb-10 flex items-center gap-3">
-		<img alt="Ponto Direto Logo" class="h-10 w-10 object-contain" data-alt="minimalist professional logo for a point of sale software called Ponto Direto with geometric shapes in navy and orange" src="{{ asset('logo_icon_small_bg.png') }}"/>
+		<img alt="Ponto Direto Logo" class="h-10 object-contain" data-alt="minimalist professional logo for a point of sale software called Ponto Direto with geometric shapes in navy and orange" src="{{ asset('logo_icon_small.png') }}"/>
 		<div>
 			<h1 class="font-bold uppercase tracking-widest text-sm">{{ config('app.name') }}</h1>
 			<p class="text-slate-400 text-xs font-inter">{{ gethostname() }}</p>

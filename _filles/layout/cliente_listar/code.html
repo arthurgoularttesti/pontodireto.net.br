@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ponto Direto POS - Gestão de Clientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#b6c7eb",
+                        "on-tertiary-fixed": "#161c22",
+                        "inverse-surface": "#213145",
+                        "outline": "#75777e",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-variant": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#262c32",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "on-surface-variant": "#44474d",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#8d939a",
+                        "surface-container-high": "#dce9ff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c5c6ce",
+                        "tertiary": "#11171d",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#2f1500",
+                        "surface-tint": "#4e5f7e",
+                        "secondary-container": "#fd8b00",
+                        "on-primary-fixed": "#081b38",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary-container": "#1a2b48",
+                        "on-primary-fixed-variant": "#374765",
+                        "secondary": "#904d00",
+                        "on-primary": "#ffffff",
+                        "primary": "#031632",
+                        "on-primary-container": "#8293b5",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d7e2ff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed": "#ffdcc3",
+                        "inverse-primary": "#b6c7eb",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "on-secondary-container": "#603100",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "gutter": "20px",
+                        "touch-margin": "16px",
+                        "container-padding": "24px",
+                        "target-min": "48px"
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 bg-blue-950 dark:bg-black w-64 border-r border-blue-900 dark:border-slate-800">
+<div class="text-white font-bold px-4 py-6 text-lg font-black tracking-tighter">
+                Ponto Direto POS
+            </div>
+<div class="px-4 py-2 mb-6">
+<p class="text-blue-200 text-xs font-medium uppercase tracking-wider opacity-60">Station 01</p>
+<p class="text-white text-sm font-semibold">Operator: Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Sales Terminal</span>
+</a>
+<a class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-150 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Gestão de Clientes</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Product Manager</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Payment Methods</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Reports</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-blue-900 pt-4">
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Support</span>
+</a>
+<button class="w-full text-left text-orange-500 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 mt-1">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-inter text-[13px] font-medium uppercase tracking-wider">Close Cashier</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen bg-background">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 sticky top-0 z-50 w-full h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-primary">Gestão de Clientes</h1>
+</div>
+<div class="flex-1 max-w-xl mx-8">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400" data-icon="search">search</span>
+<input class="w-full bg-slate-50 border-2 border-slate-200 rounded-lg pl-10 pr-4 py-2 focus:border-primary focus:ring-0 transition-all text-sm" placeholder="Buscar por nome, CPF ou telefone..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-lg font-label-bold flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        ADICIONAR CLIENTE
+                    </button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-orange-600 transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-orange-600 transition-colors" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-orange-600 transition-colors" data-icon="settings">settings</span>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 p-6 overflow-y-auto">
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Data Table and Filters -->
+<div class="col-span-12 lg:col-span-9 space-y-6">
+<!-- Filter Bar -->
+<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 text-slate-500 text-sm font-label-bold">
+<span class="material-symbols-outlined text-base" data-icon="filter_list">filter_list</span>
+                                FILTRAR POR:
+                            </div>
+<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
+<option>Todos os Status</option>
+<option>Ativo</option>
+<option>Bloqueado</option>
+</select>
+<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
+<option>Todas as Contas</option>
+<option>Com Débito</option>
+<option>Sem Débito</option>
+</select>
+<div class="ml-auto flex items-center gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 text-primary bg-primary-fixed rounded">
+<span class="material-symbols-outlined" data-icon="view_list">view_list</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 text-slate-500 font-label-bold text-[12px] uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 border-b border-slate-100">Nome do Cliente</th>
+<th class="px-6 py-4 border-b border-slate-100">Documento</th>
+<th class="px-6 py-4 border-b border-slate-100">Telefone</th>
+<th class="px-6 py-4 border-b border-slate-100">Saldo Caderneta</th>
+<th class="px-6 py-4 border-b border-slate-100">Status</th>
+<th class="px-6 py-4 border-b border-slate-100 text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-900 font-bold">RF</div>
+<div class="font-semibold text-primary">Ricardo Ferreira</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 text-sm">123.456.789-00</td>
+<td class="px-6 py-4 text-slate-600 text-sm">(11) 98877-6655</td>
+<td class="px-6 py-4">
+<span class="text-error font-bold text-sm">R$ 1.450,00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase">Ativo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all" title="Ver Detalhes"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all" title="Editar"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-all" title="Gerenciar Crédito"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-900 font-bold">MA</div>
+<div class="font-semibold text-primary">Maria Oliveira Alcantara</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 text-sm">456.789.012-11</td>
+<td class="px-6 py-4 text-slate-600 text-sm">(11) 97766-5544</td>
+<td class="px-6 py-4">
+<span class="text-slate-500 font-medium text-sm">R$ 0,00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase">Ativo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">JS</div>
+<div class="font-semibold text-primary">João Santos Lima</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 text-sm">789.012.345-22</td>
+<td class="px-6 py-4 text-slate-600 text-sm">(11) 96655-4433</td>
+<td class="px-6 py-4">
+<span class="text-orange-600 font-bold text-sm">R$ 342,50</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-slate-200 text-slate-600 rounded-full text-[11px] font-bold uppercase">Bloqueado</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-900 font-bold">AC</div>
+<div class="font-semibold text-primary">Ana Carolina Souza</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 text-sm">012.345.678-33</td>
+<td class="px-6 py-4 text-slate-600 text-sm">(11) 95544-3322</td>
+<td class="px-6 py-4">
+<span class="text-error font-bold text-sm">R$ 2.100,00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase">Ativo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-slate-50 flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Mostrando 1-4 de 1.254 clientes</span>
+<div class="flex items-center gap-1">
+<button class="p-1 hover:bg-white rounded transition-colors"><span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span></button>
+<button class="px-3 py-1 bg-primary text-white rounded text-xs font-bold">1</button>
+<button class="px-3 py-1 hover:bg-white rounded text-xs font-bold">2</button>
+<button class="px-3 py-1 hover:bg-white rounded text-xs font-bold">3</button>
+<button class="p-1 hover:bg-white rounded transition-colors"><span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary and Help -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<!-- Summary Cards -->
+<div class="bg-primary-container text-white p-6 rounded-xl shadow-lg border border-primary relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-4">
+<span class="text-on-primary-container font-label-bold uppercase text-[11px] tracking-widest">Total de Clientes</span>
+<span class="material-symbols-outlined text-secondary-container" data-icon="groups">groups</span>
+</div>
+<h3 class="text-numeral-xl font-bold">1.254</h3>
+<p class="text-[11px] text-on-primary-container mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-green-400" data-icon="trending_up">trending_up</span>
+<span class="font-bold">+12%</span> em relação ao mês anterior
+                                </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="person_search">person_search</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border-2 border-orange-100 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-4">
+<span class="text-slate-500 font-label-bold uppercase text-[11px] tracking-widest">Valor em Aberto (Caderneta)</span>
+<span class="material-symbols-outlined text-orange-600" data-icon="pending_actions">pending_actions</span>
+</div>
+<h3 class="text-headline-lg font-black text-primary">R$ 18.742,50</h3>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="A detailed portrait of a diverse commercial customer for a point of sale system interface. The image features high-key studio lighting with a clean professional background, mirroring the industrial modern aesthetic. Colors are balanced with soft blues and neutral tones to match the Ponto Direto brand identity. The subject appears friendly and approachable, representing a typical business client." src="https://lh3.googleusercontent.com/aida/ADBb0uhRJZ93VuSN6Xf0Lf7tJ2lmq9G9yihetHI2-LBj1JMMSEJEgTZei6WUbe90s0ysaABNxd_xkD0CEVi31NPM2D5mm8_lAUbZtTiG21BxV8fHt1tOkPj1976sn1NFqsCE5mRN2toJy-t2xDextpXWrXzflDIBABV-WTR3qTsdjBO388F_N55iHlmUCxA11ygPUZQsdGnY37y-zV0h2V-45g0wcRuydQsf8hN6tehSVj5rHn25I9YSZW643So"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Close-up professional headshot of a business owner for a software dashboard avatar. The lighting is crisp and natural, highlighting a modern and professional persona. The background is a blurred office setting with subtle industrial elements. The overall color palette is professional and calm, using deep blues and warm accents consistent with a high-end POS UI." src="https://lh3.googleusercontent.com/aida/ADBb0uhdzN--ABX20yEXdRExNirbYPl9b4G-3I_FFZ0nQ8vTO6_lY_dprYVfiayfcwrskobNEInvNLj-rbs3oxYlXYdnLb9BJueekQY3yD66j6AskGvNzv2BmAD6NDdTg7o4XMhx79w0Fov8R1t1lUA6QWXc82taP5ZfOIlVvSyqOp7L_DdnC9J_RmqTaJVjyUiDFKLNBWmLvSR1yIVkuXqPFIvJSYYSFPSrcAgzeDAiPie4dlan8wgjkVIlwnQ"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500">+12</div>
+</div>
+<span class="text-[10px] font-bold text-orange-600 underline cursor-pointer">Ver Relatório</span>
+</div>
+</div>
+</div>
+<!-- Help Card: Caderneta Tips -->
+<div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+<div class="flex items-start gap-4">
+<div class="bg-blue-600 text-white p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+</div>
+<div>
+<h4 class="font-label-bold text-blue-900 mb-2">Dica: Sistema de Caderneta</h4>
+<p class="text-xs text-blue-800 leading-relaxed opacity-80">
+                                        Utilize a "Caderneta" (fiado) para fidelizar clientes frequentes. Você pode definir limites de crédito individuais e bloquear automaticamente compras se o saldo exceder o permitido.
+                                    </p>
+<button class="mt-4 text-xs font-bold text-blue-600 flex items-center gap-1 hover:underline">
+                                        Configurar Limites <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Stats Mini-Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+<span class="text-[10px] font-label-bold text-slate-400 block mb-1">NOVOS (MÊS)</span>
+<span class="text-lg font-bold text-primary">42</span>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+<span class="text-[10px] font-label-bold text-slate-400 block mb-1">BLOQUEADOS</span>
+<span class="text-lg font-bold text-error">7</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

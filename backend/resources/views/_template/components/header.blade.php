@@ -3,14 +3,14 @@
 	<div class="flex items-center gap-4">
 		<span class="text-xl font-black text-[#1A2B48] font-inter tracking-tight uppercase">{{ !empty(@$title) ? @$title : config('app.name') }}</span>
 		<div class="h-8 w-px bg-slate-200 mx-2"></div>
-		<div class="flex gap-6">
+		<!-- <div class="flex gap-6">
 			<span class="font-inter text-sm font-semibold tracking-tight text-orange-600 border-b-2 border-orange-600 cursor-pointer">DASHBOARD</span>
 			<span class="font-inter text-sm font-semibold tracking-tight text-slate-500 hover:text-slate-700 cursor-pointer transition-colors">ANALYTICS</span>
 			<span class="font-inter text-sm font-semibold tracking-tight text-slate-500 hover:text-slate-700 cursor-pointer transition-colors">HISTORY</span>
-		</div>
+		</div> -->
 	</div>
 	<div class="flex items-center gap-4">
-		<div class="flex gap-2">
+		<!-- <div class="flex gap-2">
 			<button class="p-2 text-[#1A2B48] hover:bg-slate-100 rounded-lg transition-colors active:scale-95">
 				<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 			</button>
@@ -20,7 +20,7 @@
 			<button class="p-2 text-[#1A2B48] hover:bg-slate-100 rounded-lg transition-colors active:scale-95">
 				<span class="material-symbols-outlined" data-icon="settings">settings</span>
 			</button>
-		</div>
+		</div> -->
 		<div class="relative group">
 			<button class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer group">
 				<div class="text-right">
