@@ -120,7 +120,7 @@
 		<!-- Login Container -->
 		<div class="bg-white border-2 border-surface-container-high rounded-xl p-8 shadow-sm">
 			<form action="#" class="space-y-6" method="POST">
-				<p class="text-center font-body-md text-body-md text-on-surface-variant">Autenticação</p>
+				<p class="text-center font-body-md text-body-md text-on-surface-variant">Autenticação (Terminal: {{ gethostname() }})</p>
 				<!-- Username Field -->
 				<div>
 					<label class="block font-label-bold text-label-bold text-on-surface mb-2" for="username">Nome de Usuário</label>
