@@ -11,6 +11,8 @@ class ClientController extends Controller
 	
 	public function index (Request $request)
 	{
+		return Client::all();
+
 		return view('client_list', [
 			'title'			=> 'Lista de Produtos',
 			'description'	=> 'Gerencie seus níveis de estoque e automatize o processo de compras.',
