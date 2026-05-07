@@ -37,12 +37,8 @@
 			<div class="relative group">
 				<button class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary transition-colors cursor-pointer group">
 					<div class="text-right hidden sm:block">
-						<p class="font-inter text-xs font-semibold tracking-tight text-white">Gerente Geral</p>
-						<p class="text-[9px] uppercase text-green-400 font-bold tracking-wider">Online</p>
-					</div>
-					<div class="relative">
-						<img alt="User profile" class="w-8 h-8 rounded border border-blue-800 object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhRJZ93VuSN6Xf0Lf7tJ2lmq9G9yihetHI2-LBj1JMMSEJEgTZei6WUbe90s0ysaABNxd_xkD0CEVi31NPM2D5mm8_lAUbZtTiG21BxV8fHt1tOkPj1976sn1NFqsCE5mRN2toJy-t2xDextpXWrXzflDIBABV-WTR3qTsdjBO388F_N55iHlmUCxA11ygPUZQsdGnY37y-zV0h2V-45g0wcRuydQsf8hN6tehSVj5rHn25I9YSZW643So"/>
-						<span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-blue-950"></span>
+						<p class="font-inter text-xs font-semibold tracking-tight text-white">{Nome do Usuário}</p>
+						<p class="text-[9px] uppercase text-green-400 font-bold tracking-wider">{Perfil do Usuário}</p>
 					</div>
 					<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-900">expand_more</span>
 				</button>
