@@ -120,8 +120,18 @@
 		
 		<!-- Login Container -->
 		<div class="bg-white border-2 border-surface-container-high rounded-xl p-8 shadow-sm">
-			<form action="#" class="space-y-6" method="POST">
+			<form action="" class="space-y-6" method="POST">
+				@csrf
 				<p class="text-center font-body-md text-body-md text-on-surface-variant">Autenticação (Terminal: {{ gethostname() }})</p>
+				
+				@if ($errors->any())
+					@foreach ($errors->all() as $error)
+						<p class="text-center font-body-md text-body-md text-on-surface-variant">
+							{{ $error }}
+						</p>
+					@endforeach
+				@endif
+
 				<!-- Username Field -->
 				<div>
 					<label class="block font-label-bold text-label-bold text-on-surface mb-2" for="username">Nome de Usuário</label>
@@ -142,7 +152,7 @@
 				<div class="flex items-center justify-between">
 					<label class="flex items-center cursor-pointer group">
 						<div class="relative">
-							<input class="peer hidden" type="checkbox"/>
+							<input class="peer hidden" type="checkbox" name="connected" value="yes" />
 							<div class="w-5 h-5 border-2 border-outline rounded bg-white peer-checked:bg-secondary peer-checked:border-secondary transition-all"></div>
 							<span class="material-symbols-outlined absolute inset-0 text-white text-[16px] flex items-center justify-center opacity-0 peer-checked:opacity-100" style="font-variation-settings: 'wght' 700;">check</span>
 						</div>

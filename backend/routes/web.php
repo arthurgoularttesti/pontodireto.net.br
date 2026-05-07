@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 Route::prefix('login')->controller(LoginController::class)->group(function () {
 
 	Route::any('/', 'index')->name('login');
+	Route::any('/logout', 'logout')->name('logout');
 
 });
 
