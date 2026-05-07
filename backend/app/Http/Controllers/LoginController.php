@@ -15,12 +15,12 @@ class LoginController extends Controller
 				'username'	=> ['required', 'max:255'],
 				'password'	=> ['required', 'max:255'],
 				'connected'	=> ['nullable'],
-				'test'		=> ['required'],
+				// 'test'		=> ['required'],
 			]);
 
 			if ($validator->validated())
 			{
-				return 'Passou na validação';
+				return redirect()->route('dashboard');
 			}
 
 			return redirect()->route('login')->withErrors($validator);

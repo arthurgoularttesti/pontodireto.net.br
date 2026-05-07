@@ -126,7 +126,7 @@
 				
 				@if ($errors->any())
 					@foreach ($errors->all() as $error)
-						<p class="text-center font-body-md text-body-md text-on-surface-variant">
+						<p class="text-center font-body-md text-body-md text-on-surface-variant bg-orange-600 text-white rounded p-1">
 							{{ $error }}
 						</p>
 					@endforeach
