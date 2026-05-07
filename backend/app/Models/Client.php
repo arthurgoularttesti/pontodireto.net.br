@@ -103,4 +103,25 @@ class Client extends Model
 			},
 		);
 	}
+
+	protected function currencyHtml() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				$class = 'bg-slate-200';
+
+				if ($this->currency > 0)
+				{
+					$class = 'bg-green-100 text-green-700';
+				}
+				elseif ($this->currency < 0)
+				{
+					$class = 'bg-secondary-fixed text-on-secondary-fixed-variant';
+				}
+				
+				return '<span class="px-3 py-1 text-xs font-bold rounded-full uppercase tracking-tighter ' . $class . '">' . $this->currency_string . '</span>';
+			},
+		);
+	}
 }

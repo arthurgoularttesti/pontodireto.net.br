@@ -14,13 +14,13 @@ class ClientController extends Controller
 		return view('_template.page_list', [
 			'title'			=> 'Lista de Produtos',
 			'description'	=> 'Gerencie seus níveis de estoque e automatize o processo de compras.',
-			'data'			=> Client::all(),
+			'data'			=> Client::paginate(50),
 			'columns'		=> [
 				(object) ['label'=>'Nome do Cliente', 'parser'=>function ($row) {return $row->name_html;}],
 				(object) ['label'=>'Status', 'parser'=>function ($row) {return $row->status_html;}],
 				(object) ['label'=>'Documento', 'parser'=>function ($row) {return $row->document;}],
 				(object) ['label'=>'Telefone', 'parser'=>function ($row) {return $row->phone_html;}],
-				(object) ['label'=>'Saldo Caderneta', 'parser'=>function ($row) {return $row->curency_string;}],
+				(object) ['label'=>'Saldo Caderneta', 'parser'=>function ($row) {return $row->currency_html;}],
 			],
 		]);
 	}
