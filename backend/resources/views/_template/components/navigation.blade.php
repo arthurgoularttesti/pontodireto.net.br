@@ -10,26 +10,21 @@
 				</div>
 			</div>
 			<div class="hidden xl:flex items-center gap-1">
-				<a class="bg-orange-600 text-white rounded px-3 py-2 flex items-center gap-2 transition-transform scale-95" href="#">
-					<span class="material-symbols-outlined text-[18px]" data-icon="point_of_sale">point_of_sale</span>
-					<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Dashboard</span>
-				</a>
-				<a class="text-blue-200 hover:bg-blue-900 px-3 py-2 flex items-center gap-2 rounded transition-all duration-150" href="#">
-					<span class="material-symbols-outlined text-[18px]" data-icon="point_of_sale">shopping_cart</span>
-					<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Terminal</span>
-				</a>
-				<a class="text-blue-200 hover:bg-blue-900 px-3 py-2 flex items-center gap-2 rounded transition-all duration-150" href="#">
-					<span class="material-symbols-outlined text-[18px]" data-icon="inventory_2">inventory_2</span>
-					<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Produtos</span>
-				</a>
-				<a class="text-blue-200 hover:bg-blue-900 px-3 py-2 flex items-center gap-2 rounded transition-all duration-150" href="#">
-					<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
-					<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Financeiro</span>
-				</a>
-				<a class="text-blue-200 hover:bg-blue-900 px-3 py-2 flex items-center gap-2 rounded transition-all duration-150" href="#">
-					<span class="material-symbols-outlined text-[18px]" data-icon="warehouse">warehouse</span>
-					<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Estoque</span>
-				</a>
+
+				@foreach (config('menu') as $menu)
+
+					<a class="{{ request()->segment(1) == @$menu->route ? 'bg-orange-600 text-white transition-transform scale-95' : 'text-blue-200 hover:bg-blue-900 transition-all duration-150' }} px-3 py-2 flex items-center gap-2" href="{{ route($menu->route) }}">
+
+						@if(isset($menu->icon) && !is_null($menu->icon) && !empty($menu->icon))
+
+							<span class="material-symbols-outlined text-[18px]" data-icon="point_of_sale">{{ $menu->icon }}</span>
+
+						@endif
+
+						<span class="font-inter text-[11px] font-medium uppercase tracking-wider">{!! @$menu->label !!}</span>
+					</a>
+
+				@endforeach
 			</div>
 		</div>
 		<div class="flex items-center gap-4">
