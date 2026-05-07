@@ -24,7 +24,7 @@ class Client extends Model
 		self::STATUS_INACTIVE		=> 'Inativo',
 	];
 
-	protected function acronym(): Attribute
+	protected function acronym() : Attribute
 	{
 		return Attribute::make(
 			get: function () {
@@ -38,6 +38,68 @@ class Client extends Model
 					return substr($this->name, 0, 2);
 
 				return substr($nameArray[0], 0, 1) . substr($nameArray[count($nameArray) - 1], 0, 1);
+			},
+		);
+	}
+
+	protected function nameHtml() : Attribute
+	{
+		return Attribute::make(function () {
+			return '<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-900 font-bold">' . $this->acronym . '</div><div class="font-semibold text-primary">' . $this->name . '</div></div>';
+		});
+	}
+
+	protected function statusString() : Attribute
+	{
+		return Attribute::make(
+			get: fn () => self::$statuses[$this->status],
+		);
+	}
+
+	protected function statusHtml() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				$class = 'bg-slate-200';
+
+				switch ($this->status)
+				{
+					case self::STATUS_ACTIVE:
+
+						$class = 'bg-green-100 text-green-700';
+						break;
+
+					case self::STATUS_INACTIVE:
+
+						$class = 'bg-secondary-fixed text-on-secondary-fixed-variant';
+						break;
+				}
+				
+				return '<span class="px-3 py-1 text-xs font-bold rounded-full uppercase tracking-tighter ' . $class . '">' . $this->status_string . '</span>';
+			},
+		);
+	}
+
+	protected function phoneHtml() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				if (empty($this->phone))
+					return '<span class="text-outline-variant" style="text-decoration: line-through;">Não Informado</span>';
+
+				return $this->phone;
+			},
+		);
+	}
+
+	protected function currencyString() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				return 'R$ '. number_format($this->currency, 2, ',', '.');
 			},
 		);
 	}
