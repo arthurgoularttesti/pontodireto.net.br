@@ -1,60 +1,66 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="pt-BR">
 <head>
 	<meta charset="utf-8"/>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-	<title>Ponto Direto POS Dashboard</title>
-	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<title>Ponto Direto POS - Dashboard</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 	<script id="tailwind-config">
 		tailwind.config = {
 			darkMode: "class",
 			theme: {
 				extend: {
 					"colors": {
-						"tertiary-fixed": "#dde3eb",
-						"surface": "#f8f9ff",
-						"tertiary": "#11171d",
-						"primary-fixed": "#d7e2ff",
-						"on-surface": "#0b1c30",
-						"outline": "#75777e",
-						"inverse-primary": "#b6c7eb",
-						"secondary-container": "#fd8b00",
-						"on-primary": "#ffffff",
 						"error-container": "#ffdad6",
-						"on-primary-fixed": "#081b38",
-						"on-secondary-fixed-variant": "#6e3900",
-						"surface-variant": "#d3e4fe",
-						"primary-fixed-dim": "#b6c7eb",
-						"surface-container-low": "#eff4ff",
-						"on-tertiary-fixed": "#161c22",
-						"primary": "#031632",
-						"secondary": "#904d00",
-						"surface-container-highest": "#d3e4fe",
-						"outline-variant": "#c5c6ce",
-						"secondary-fixed-dim": "#ffb77d",
-						"on-primary-container": "#8293b5",
-						"tertiary-container": "#262c32",
-						"surface-bright": "#f8f9ff",
-						"on-tertiary": "#ffffff",
-						"surface-tint": "#4e5f7e",
-						"background": "#f8f9ff",
-						"surface-dim": "#cbdbf5",
-						"inverse-on-surface": "#eaf1ff",
-						"on-error": "#ffffff",
 						"on-secondary-container": "#603100",
-						"on-tertiary-container": "#8d939a",
-						"surface-container-lowest": "#ffffff",
-						"surface-container": "#e5eeff",
-						"inverse-surface": "#213145",
+						"secondary": "#904d00",
+						"outline-variant": "#c5c6ce",
+						"surface-tint": "#4e5f7e",
+						"primary": "#031632",
+						"surface-bright": "#f8f9ff",
+						"on-surface": "#0b1c30",
+						"tertiary-fixed": "#dde3eb",
+						"tertiary": "#11171d",
+						"surface-container-highest": "#d3e4fe",
+						"surface-container-low": "#eff4ff",
 						"on-primary-fixed-variant": "#374765",
+						"primary-fixed-dim": "#b6c7eb",
 						"on-background": "#0b1c30",
+						"on-secondary-fixed": "#2f1500",
+						"surface-container": "#e5eeff",
+						"on-secondary-fixed-variant": "#6e3900",
+						"on-primary": "#ffffff",
+						"error": "#ba1a1a",
 						"on-secondary": "#ffffff",
+						"on-tertiary-fixed-variant": "#41474e",
+						"primary-container": "#1a2b48",
+						"on-tertiary": "#ffffff",
+						"tertiary-container": "#262c32",
+						"surface": "#f8f9ff",
+						"on-tertiary-container": "#8d939a",
+						"surface-container-high": "#dce9ff",
+						"surface-container-lowest": "#ffffff",
+						"inverse-on-surface": "#eaf1ff",
+						"tertiary-fixed-dim": "#c1c7cf",
+						"on-primary-fixed": "#081b38",
+						"surface-dim": "#cbdbf5",
+						"secondary-container": "#fd8b00",
+						"on-error-container": "#93000a",
+						"surface-variant": "#d3e4fe",
+						"outline": "#75777e",
+						"on-tertiary-fixed": "#161c22",
+						"on-primary-container": "#8293b5",
+						"inverse-primary": "#b6c7eb",
+						"inverse-surface": "#213145",
+						"background": "#f8f9ff",
+						"primary-fixed": "#d7e2ff",
+						"secondary-fixed-dim": "#ffb77d",
 						"secondary-fixed": "#ffdcc3",
-						"surface-container-high": "#dce9ff"
+						"on-error": "#ffffff",
+						"on-surface-variant": "#44474d"
 					},
 					"borderRadius": {
 						"DEFAULT": "0.125rem",
@@ -63,58 +69,63 @@
 						"full": "0.75rem"
 					},
 					"spacing": {
-						"base": "8px",
+						"touch-margin": "16px",
 						"gutter": "20px",
 						"target-min": "48px",
-						"touch-margin": "16px",
-						"container-padding": "24px"
+						"container-padding": "24px",
+						"base": "8px"
 					},
 					"fontFamily": {
+						"body-lg": ["Inter"],
+						"label-bold": ["Inter"],
+						"body-md": ["Inter"],
 						"numeral-xl": ["Inter"],
 						"headline-md": ["Inter"],
-						"label-bold": ["Inter"],
 						"headline-lg": ["Inter"],
-						"body-lg": ["Inter"],
-						"display-price": ["Inter"],
-						"body-md": ["Inter"]
+						"display-price": ["Inter"]
 					},
 					"fontSize": {
+						"body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+						"label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+						"body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
 						"numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
 						"headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-						"label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
 						"headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-						"body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-						"display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-						"body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+						"display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
 					}
-				}
-			}
+				},
+			},
 		}
 	</script>
 	<style>
+		body { font-family: 'Inter', sans-serif; }
 		.material-symbols-outlined {
 			font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+			vertical-align: middle;
 		}
-		body { font-family: 'Inter', sans-serif; }
+		.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+		.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+		.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 	</style>
-
 	@stack('css.pre')
 	@stack('script.pre')
-
 </head>
-<body class="bg-background text-on-background antialiased flex">
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
 	
-	@include('_template.components.sidebar', [
-		'title'		=> @$title,
+	@include('_template.components.navigation', [
+	 	'title'		=> @$title,
 	])
-	<!-- Main Content Area -->
-	<main class="flex-1 ml-64 min-h-screen">
-	
-		@include('_template.components.header', [
+
+	<!-- Main Content Canvas -->
+	<main class="flex-1 flex flex-col overflow-hidden">
+
+		@include('_template.components.utilitybar', [
 			'title'		=> @$title,
 		])
 
 		@yield('content')
+
+	</main>
 
 	@stack('css.pos')
 	@stack('script.pos')
