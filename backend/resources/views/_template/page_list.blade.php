@@ -3,36 +3,71 @@
 @section('title', @$title)
 @section('content')
 
+	<?php $hasFilter = isset($filters) && !is_null($filters) && is_array($filters) && count($filters) > 0; ?>
+	<?php $hasAction = isset($actions) && !is_null($actions) && is_array($actions) && count($actions) > 0; ?>
+
 	<!-- Dashboard Content -->
 	<div class="flex-1 p-6 overflow-y-auto">
 		<div class="grid grid-cols-12 gap-6">
 			<!-- Left Column: Data Table and Filters -->
 			<div class="col-span-12 space-y-6">
 
-				@if(isset($filter) && !is_null($filter) && is_array($filter))
+				@if($hasFilter || $hasAction)
 			
-					<!-- Filter Bar -->
+					<!-- Filter and Action Bar -->
 					<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-wrap items-center gap-4">
-						<div class="flex items-center gap-2 text-slate-500 text-sm font-label-bold">
-							<span class="material-symbols-outlined text-base" data-icon="filter_list">filter_list</span>
-							FILTRAR POR:
-						</div>
-						<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
-							<option>Todos os Status</option>
-							<option>Ativo</option>
-							<option>Bloqueado</option>
-						</select>
-						<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
-							<option>Todas as Contas</option>
-							<option>Com Débito</option>
-							<option>Sem Débito</option>
-						</select>
-						<div class="ml-auto flex items-center gap-2">
-							<button class="p-2 text-primary bg-primary-fixed rounded flex">
-								<span class="material-symbols-outlined" data-icon="add">add</span>
-								Add Cliente
-							</button>
-						</div>
+
+						@if ($hasFilter)
+						
+							<div class="flex items-center gap-2 text-slate-500 text-sm font-label-bold">
+								<span class="material-symbols-outlined text-base" data-icon="filter_list">filter_list</span>
+								FILTRAR POR:
+							</div>
+							<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
+								<option>Todos os Status</option>
+								<option>Ativo</option>
+								<option>Bloqueado</option>
+							</select>
+							<select class="bg-slate-50 border-2 border-slate-100 rounded-lg px-3 py-1.5 text-xs font-semibold focus:border-primary focus:ring-0">
+								<option>Todas as Contas</option>
+								<option>Com Débito</option>
+								<option>Sem Débito</option>
+							</select>
+
+						@endif
+
+						
+						@if($hasAction)
+						
+							<div class="ml-auto flex items-center gap-2">
+								
+								@foreach ($actions as $action)
+
+									@switch ($action->type)
+
+										@case('button')
+
+											<a class="p-2 text-primary bg-primary-fixed rounded flex" href="{{ route($action->route) }}">
+
+												@if(isset($action->icon) && !is_null($action->icon))
+
+													<span class="material-symbols-outlined" data-icon="add">{{ $action->icon }}</span>
+
+												@endif
+												
+												{!! $action->label !!}
+											
+</a>
+
+											@break
+
+										@endswitch
+									
+								@endforeach
+							</div>
+						
+						@endif
+					
 					</div>
 
 				@endif

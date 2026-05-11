@@ -8,13 +8,13 @@
 		</nav>
 	</div>
 	<div class="flex items-center gap-4">
-		<button class="p-2 text-slate-500 hover:bg-slate-50 rounded transition-colors relative cursor-pointer">
+		<!-- <button class="p-2 text-slate-500 hover:bg-slate-50 rounded transition-colors relative cursor-pointer">
 			<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
 			<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-orange-600 rounded-full"></span>
 		</button>
 		<button class="p-2 text-slate-500 hover:bg-slate-50 rounded transition-colors cursor-pointer">
 			<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
-		</button>
+		</button> -->
 		<div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
 		<button class="flex items-center gap-2 px-3 py-1.5 bg-blue-900 text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-800 transition-colors">
 			Fechar Caixa

@@ -22,6 +22,10 @@ class ClientController extends Controller
 				(object) ['label'=>'Telefone', 'parser'=>function ($row) {return $row->phone_html;}],
 				(object) ['label'=>'Saldo Caderneta', 'parser'=>function ($row) {return $row->currency_html;}],
 			],
+			// 'filters'		=> [1],
+			'actions'			=> [
+				(object) ['type'=>'button', 'label'=>'Adicionar Cliente', 'icon'=>'add', 'route'=>'client.create'],
+			],
 		]);
 	}
 
