@@ -121,6 +121,7 @@
 
 		@include('_template.components.utilitybar', [
 			'title'		=> @$title,
+			'data'		=> @$data,
 		])
 
 		@yield('content')

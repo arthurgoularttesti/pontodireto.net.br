@@ -1,10 +1,27 @@
+<?php $menusByRoute = collect(config('menu'))->keyBy('route'); ?>
+
 <!-- Secondary Utility Bar -->
 <div class="bg-white border-b border-slate-200 px-6 h-12 flex items-center justify-between shrink-0">
 	<div class="flex items-center gap-4">
 		<nav class="flex items-center text-[11px] font-bold text-slate-500 uppercase tracking-widest gap-2">
-			<span class="hover:text-blue-950 cursor-pointer">Início</span>
-			<span class="text-slate-300">/</span>
-			<span class="text-blue-950">Dashboard</span>
+
+			@if (request()->segment(1) != 'dashboard')
+
+				<a href="{{ route('dashboard') }}"><span class="hover:text-blue-950">Início</span></a>
+				<span class="text-slate-300">/</span>
+
+			@endif
+
+			<?php $currentMenu = $menusByRoute[request()->segment(1)]; ?>
+
+			<a href="{{ route($currentMenu->route) }}"><span class="text-blue-950">{{ $currentMenu->label }}</span></a>
+
+			@if (!empty(request()->segment(2)))
+
+				<span class="text-slate-300">/</span>
+				<span class="text-blue-950">{{ $currentMenu->label }}</span>
+
+			@endif
 		</nav>
 	</div>
 	<div class="flex items-center gap-4">
