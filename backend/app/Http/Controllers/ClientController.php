@@ -12,8 +12,8 @@ class ClientController extends Controller
 	public function index (Request $request)
 	{
 		return view('_template.page_list', [
-			'title'			=> 'Lista de Produtos',
-			'description'	=> 'Gerencie seus níveis de estoque e automatize o processo de compras.',
+			'title'			=> 'Lista de Clientes',
+			'description'	=> 'Gerencie seus clientes, saldos de crédito, dados gerenciais, etc.',
 			'data'			=> Client::paginate(50),
 			'columns'		=> [
 				(object) ['label'=>'Nome do Cliente', 'parser'=>function ($row) {return $row->name_html;}],

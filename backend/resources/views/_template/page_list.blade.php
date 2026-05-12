@@ -34,6 +34,19 @@
 								<option>Sem Débito</option>
 							</select>
 
+						@elseif (isset($title) && !is_null($title))
+
+							<div>
+								<h2 class="font-headline-md text-headline-md text-primary">{{ @$title }}</h2>
+
+								@if (isset($description) && !is_null($description))
+
+									<p class="text-on-surface-variant font-body-md">{!! $description !!}</p>
+
+								@endif
+
+							</div>
+
 						@endif
 
 						
