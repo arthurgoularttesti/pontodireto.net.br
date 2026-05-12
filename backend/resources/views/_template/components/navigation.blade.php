@@ -33,6 +33,8 @@
 				<input class="w-64 pl-10 pr-4 py-1.5 bg-blue-900/50 border border-blue-800 rounded text-xs text-white placeholder-blue-300/50 focus:ring-1 focus:ring-orange-600 focus:border-transparent outline-none transition-all" placeholder="Buscar pedidos..." type="text"/>
 			</div> -->
 			<!-- <div class="h-8 w-[1px] bg-blue-900"></div> -->
+
+			@include('_template.components.branchselector')
 			
 			<div class="relative group">
 				<button class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary transition-colors cursor-pointer group">

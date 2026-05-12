@@ -11,13 +11,20 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('clients', function (Blueprint $table) {
+		Schema::create('branches', function (Blueprint $table) {
 
 			$table->id();
 			$table->tinyInteger('status')->unsigned()->nullable();
+			$table->string('label')->nullable();
 			$table->string('name')->nullable();
 			$table->string('document', 32)->nullable();
-			$table->decimal('currency')->default(0);
+			$table->string('registration_state', 32)->nullable();
+			$table->string('address_zip')->nullable();
+			$table->string('address_street')->nullable();
+			$table->string('address_city')->nullable();
+			$table->string('address_state')->nullable();
+			$table->string('phone')->nullable();
+			$table->string('email')->nullable();
 
 			$table->timestamps();
 			$table->softDeletes();
@@ -30,6 +37,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('clients');
+		Schema::dropIfExists('branches');
 	}
 };
