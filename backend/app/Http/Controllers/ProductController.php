@@ -17,30 +17,33 @@ class ProductController extends Controller
 			'columns'		=> [
 				(object) ['label'=>'Detalhes do Produto', 'parser'=>function ($row) {return $row->name_html;}],
 				(object) ['label'=>'Status', 'parser'=>function ($row) {return $row->status_html;}],
-				(object) ['label'=>'Documento', 'parser'=>function ($row) {return $row->document;}],
-				(object) ['label'=>'Telefone', 'parser'=>function ($row) {return $row->phone_html;}],
-				(object) ['label'=>'Saldo Caderneta', 'parser'=>function ($row) {return $row->currency_html;}],
+				(object) ['label'=>'Categoria', 'parser'=>function ($row) {return $row->category_html;}],
+				(object) ['label'=>'Nível do Estoque', 'parser'=>function ($row) {return $row->stock_html;}],
+				(object) ['label'=>'Preço', 'parser'=>function ($row) {return $row->price_string;}],
 			],
 			// 'filters'		=> [1],
-			'actions'			=> [
-				(object) ['type'=>'button', 'label'=>'Adicionar Cliente', 'icon'=>'add', 'route'=>'client.create'],
+			'rowActions'	=> [
+				(object) ['type'=>'edit', 'route'=>'product.edit'],
+			],
+			'pageActions'	=> [
+				(object) ['type'=>'button', 'label'=>'Adicionar Cliente', 'icon'=>'add', 'route'=>'product.create'],
 			],
 		]);
 	}
 
 	public function create (Request $request)
 	{
-
+		return $this->_edit($request, new Product());
 	}
 
-	public function edit (Request $request)
+	public function edit (Request $request, int $product)
 	{
-
+		return $this->_edit($request, Product::find($product));
 	}
 
 	public function _edit (Request $request, Product $product)
 	{
-
+		return [$request, $product];
 	}
 
 	public function volume (Request $request)

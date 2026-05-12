@@ -3,8 +3,9 @@
 @section('title', @$title)
 @section('content')
 
-	<?php $hasFilter = isset($filters) && !is_null($filters) && is_array($filters) && count($filters) > 0; ?>
-	<?php $hasAction = isset($actions) && !is_null($actions) && is_array($actions) && count($actions) > 0; ?>
+	<?php $hasPageFilters = isset($filters) && !is_null($filters) && is_array($filters) && count($filters) > 0; ?>
+	<?php $hasPageActions = isset($pageActions) && !is_null($pageActions) && is_array($pageActions) && count($pageActions) > 0; ?>
+	<?php $hasRowActions = isset($rowActions) && !is_null($rowActions) && is_array($rowActions) && count($rowActions) > 0; ?>
 
 	<!-- Dashboard Content -->
 	<div class="flex-1 p-6 overflow-y-auto">
@@ -12,12 +13,12 @@
 			<!-- Left Column: Data Table and Filters -->
 			<div class="col-span-12 space-y-6">
 
-				@if($hasFilter || $hasAction)
+				@if($hasPageFilters || $hasPageActions)
 			
 					<!-- Filter and Action Bar -->
 					<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-wrap items-center gap-4">
 
-						@if ($hasFilter)
+						@if ($hasPageFilters)
 						
 							<div class="flex items-center gap-2 text-slate-500 text-sm font-label-bold">
 								<span class="material-symbols-outlined text-base" data-icon="filter_list">filter_list</span>
@@ -50,11 +51,11 @@
 						@endif
 
 						
-						@if($hasAction)
+						@if($hasPageActions)
 						
 							<div class="ml-auto flex items-center gap-2">
 								
-								@foreach ($actions as $action)
+								@foreach ($pageActions as $action)
 
 									@switch ($action->type)
 
@@ -96,14 +97,10 @@
 
 								@endforeach
 
-								@if(isset($actions) && is_array($actions))
+								@if($hasRowActions)
 
-									@foreach ($actions as $action)
-
-										<th class="px-6 py-4 border-b border-slate-100 text-right">Ações</th>
-
-									@endforeach
-
+									<th class="px-6 py-4 border-b border-slate-100 text-right">Ações</th>
+								
 								@endif
 							</tr>
 						</thead>
@@ -117,11 +114,36 @@
 
 										<?php $parser = $column->parser; ?>
 
-										<td class="px-6 py-4">{!! $parser($row) !!}
-									
+										<td class="px-6 py-4">
+											{!! $parser($row) !!}
 										</td>
 
 									@endforeach
+
+									@if($hasRowActions)
+
+										<td class="px-6 py-4 text-right">
+
+											@foreach ($rowActions as $action)
+
+												@switch($action->type)
+
+													@case('edit')
+
+														<a href="{{ route($action->route, [$row->id]) }}" class="w-10 h-10 inline-flex items-center justify-center text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-all">
+															<span class="material-symbols-outlined" data-icon="edit">edit</span>
+														</a>
+
+														@break
+
+												@endswitch
+
+											@endforeach
+
+										</td>
+									
+									@endif
+
 									<!-- <td class="px-6 py-4 text-slate-600 text-sm">123.456.789-00</td>
 									<td class="px-6 py-4 text-slate-600 text-sm">(11) 98877-6655</td>
 									<td class="px-6 py-4">
@@ -141,7 +163,7 @@
 
 							@empty
 
-								<tr class="hover:bg-slate-50 transition-colors group" colspan="{{ count($columns) + (isset($actions) && is_array($actions) ? 1 : 0) }}"></tr>
+								<tr class="hover:bg-slate-50 transition-colors group" colspan="{{ count($columns) + (isset($pageActions) && is_array($pageActions) ? 1 : 0) }}"></tr>
 
 							@endforelse
 							

@@ -26,7 +26,7 @@ Route::prefix('product')->name('product')->controller(ProductController::class)-
 	Route::any('/create', 'create')->name('.create');
 	Route::any('/edit/{id}', 'edit')->name('.edit');
 	Route::any('/volume/{id}', 'volume')->name('.volume.list');
-	Route::any('/volume/create', 'volume')->name('.volume.create');
+	Route::any('/volume/create/{id}', 'volume')->name('.volume.create');
 	Route::any('/volume/edit/{id}', 'volume')->name('.volume.edit');
 
 });

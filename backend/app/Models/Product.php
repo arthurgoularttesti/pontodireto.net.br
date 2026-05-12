@@ -39,6 +39,54 @@ class Product extends Model
 			return '<div class="flex items-center gap-3">' . $icon . $name . '</div>';
 		});
 	}
+	
+	protected function categoryHtml() : Attribute
+	{
+		return Attribute::make(function () {
+
+			return '<span class="px-2 py-1 bg-surface-container text-on-primary-fixed-variant font-label-bold text-[10px] uppercase tracking-tighter border border-outline-variant" style="background-color:' . $this->category->color . '; color:#fff;">' . $this->category->name . '</span>';
+		});
+	}
+	
+	protected function stockHtml() : Attribute
+	{
+		return Attribute::make(function () {
+
+			$icon = '<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-primary" data-icon="liquor">liquor</span></div>';
+			$name = '<div><div class="font-label-bold text-primary">' . $this->name . '</div><div class="text-xs text-on-surface-variant">SKU: ' . $this->sku . '</div></div>';
+
+			// Stock High
+			// <div class="flex items-center gap-2">
+			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+			// <div class="w-3/4 h-full bg-green-500"></div>
+			// </div>
+			// <span class="font-label-bold text-xs text-green-700">142 units</span>
+			// </div>
+
+			// Stock Low
+			// <div class="flex items-center gap-2">
+			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+			// <div class="w-3/4 h-full bg-green-500"></div>
+			// </div>
+			// <span class="font-label-bold text-xs text-green-700">142 units</span>
+			// </div>
+
+			// Stock Empty
+			// <div class="flex items-center gap-2">
+			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+			// <div class="w-0.5 h-full bg-red-600"></div>
+			// </div>
+			// <span class="font-label-bold text-xs text-red-600">OUT OF STOCK</span>
+			// </div>
+
+			return '<div class="flex items-center gap-2">
+				<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+					<div class="w-3/4 h-full bg-green-500"></div>
+				</div>
+				<span class="font-label-bold text-xs text-green-700">142 units</span>
+			</div>';
+		});
+	}
 
 	protected function statusString() : Attribute
 	{
@@ -69,6 +117,13 @@ class Product extends Model
 				
 				return '<span class="px-3 py-1 text-xs font-bold rounded-full uppercase tracking-tighter ' . $class . '">' . $this->status_string . '</span>';
 			},
+		);
+	}
+
+	protected function priceString() : Attribute
+	{
+		return Attribute::make(
+			get: fn () => 'R$ '. number_format($this->price, 2, ',', '.'),
 		);
 	}
 
