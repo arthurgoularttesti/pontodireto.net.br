@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\Appends;
 
-#[Fillable(['category_id','status','name','sku','image','price','margin','stock_critical','stock_minimal','stock_max'])]
-#[Hidden(['category_id'])]
+#[Fillable(['status','name','icon','color'])]
+#[Hidden([])]
 #[Appends([])]
-#[Table('products')]
-class Product extends Model
+#[Table('products_categories')]
+class ProductCategory extends Model
 {
 	//
 }
