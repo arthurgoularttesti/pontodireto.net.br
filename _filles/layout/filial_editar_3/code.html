@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-container": "#8d939a",
+                    "on-surface-variant": "#44474d",
+                    "secondary-fixed-dim": "#ffb77d",
+                    "outline": "#75777e",
+                    "on-primary-fixed-variant": "#374765",
+                    "surface-container-high": "#dce9ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#603100",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c5c6ce",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "tertiary": "#11171d",
+                    "inverse-surface": "#213145",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#ffdcc3",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#161c22",
+                    "surface-dim": "#cbdbf5",
+                    "primary": "#031632",
+                    "secondary-container": "#fd8b00",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#8293b5",
+                    "surface-tint": "#4e5f7e",
+                    "on-primary-fixed": "#081b38",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d7e2ff",
+                    "on-tertiary-fixed-variant": "#41474e",
+                    "on-secondary-fixed": "#2f1500",
+                    "tertiary-fixed-dim": "#c1c7cf",
+                    "surface": "#f8f9ff",
+                    "inverse-primary": "#b6c7eb",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#904d00",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#dde3eb",
+                    "primary-container": "#1a2b48",
+                    "background": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "tertiary-container": "#262c32",
+                    "surface-bright": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "base": "8px",
+                    "touch-margin": "16px",
+                    "target-min": "48px",
+                    "container-padding": "24px"
+            },
+            "fontFamily": {
+                    "display-price": ["Inter"],
+                    "numeral-xl": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-price": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "numeral-xl": ["36px", {"lineHeight": "44px", "fontWeight": "500"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav { background-color: #ea580c; color: white; } /* Vibrant Orange */
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-4 z-40 w-64 border-r-2 border-blue-900 bg-blue-950 dark:bg-black font-inter text-[13px] font-medium uppercase tracking-wider">
+<div class="text-white font-bold px-4 py-6 text-xl tracking-tighter">
+            Ponto Direto POS
+        </div>
+<div class="px-4 mb-6">
+<div class="text-blue-300 text-[10px] mb-1">STATION 01</div>
+<div class="text-white font-semibold">Operator: Admin</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span>Sales Terminal</span>
+</a>
+<a class="bg-orange-600 text-white rounded-md mx-2 px-4 py-3 flex items-center gap-3 scale-98 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Product Manager</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Payment Methods</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+<span>Inventory</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 dark:hover:bg-slate-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Reports</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1">
+<button class="w-full mx-2 px-4 py-3 text-orange-500 font-bold border-2 border-orange-500 rounded-md mb-4 hover:bg-orange-500 hover:text-white transition-colors uppercase text-xs">
+                Close Cashier
+            </button>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<a class="text-blue-200 hover:bg-blue-900 mx-2 px-4 py-3 flex items-center gap-3 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 ml-64 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="h-16 w-full border-b-2 border-slate-100 flex items-center justify-between px-6 sticky top-0 z-50 bg-white shadow-sm">
+<div class="flex items-center gap-6">
+<h1 class="text-lg font-black text-blue-900 tracking-tighter uppercase">Edição de Filial</h1>
+<div class="relative group">
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors" id="branchDropdownBtn" onclick="document.getElementById('branchMenu').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-orange-600" data-icon="store">store</span>
+<span class="font-label-bold text-on-surface">Matriz - São Paulo</span>
+<span class="material-symbols-outlined text-slate-400" data-icon="expand_more">expand_more</span>
+</button><div class="hidden absolute left-0 mt-2 w-64 bg-white border border-slate-200 rounded-md shadow-xl z-[60] overflow-hidden animate-in fade-in zoom-in duration-150" id="branchMenu">
+<div class="py-1"><a class="flex items-center px-4 py-3 text-sm text-slate-600 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-blue-900 scale-75" data-icon="public">public</span>
+<span class="font-semibold">Todas as Filiais (Consolidado)</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-on-surface hover:bg-surface-container-high transition-colors border-t border-slate-50" href="#">
+<span class="material-symbols-outlined mr-3 text-orange-600 scale-75">store</span>
+<span class="font-semibold">Matriz - São Paulo</span>
+<span class="material-symbols-outlined ml-auto text-orange-600 text-sm">check_circle</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-slate-600 hover:bg-surface-container-high transition-colors border-t border-slate-50" href="#">
+<span class="material-symbols-outlined mr-3 text-slate-400 scale-75">store</span>
+<span>Filial - Rio de Janeiro</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-slate-600 hover:bg-surface-container-high transition-colors border-t border-slate-50" href="#">
+<span class="material-symbols-outlined mr-3 text-slate-400 scale-75">store</span>
+<span>Filial - Curitiba</span>
+</a>
+</div>
+<div class="bg-slate-50 p-2 border-t border-slate-200">
+<button class="w-full py-2 text-[10px] font-bold text-blue-900 uppercase tracking-widest hover:bg-white rounded transition-colors">
+            Manage All Branches
+        </button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="flex items-center gap-3 ml-2 pl-4 border-l border-slate-200">
+<span class="material-symbols-outlined text-3xl text-slate-400" data-icon="account_circle">account_circle</span>
+<div class="text-left leading-none">
+<div class="font-bold text-sm">João Silva</div>
+<div class="text-[10px] uppercase text-slate-400 font-semibold">Manager</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto bg-background p-8">
+<div class="max-w-5xl mx-auto">
+<!-- Action Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex gap-2 text-xs font-semibold text-slate-400 uppercase mb-2">
+<span>Administration</span>
+<span>/</span>
+<span>Branches</span>
+<span>/</span>
+<span class="text-orange-600">Edit Branch</span>
+</nav>
+<h2 class="text-headline-md font-headline-md text-on-surface">Informações da Unidade</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 border-2 border-blue-900 text-blue-900 font-bold rounded-md hover:bg-blue-50 transition-colors active:scale-95 flex items-center gap-2 uppercase text-xs">
+                            Cancel
+                        </button>
+<button class="px-8 py-3 bg-orange-600 text-white font-bold rounded-md shadow-lg shadow-orange-100 hover:bg-orange-700 transition-all active:scale-95 flex items-center gap-2 uppercase text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+                            Save Changes
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout for Form Sections -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Identity Card -->
+<div class="col-span-8 bg-white border border-slate-200 p-6 rounded-lg shadow-sm">
+<div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+<span class="material-symbols-outlined text-blue-900" data-icon="business">business</span>
+<h3 class="font-headline-md text-lg text-blue-900">General Data</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Branch Name (Nome Fantasia)</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="Matriz - São Paulo"/>
+</div>
+<div class="col-span-2">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Corporate Name (Razão Social)</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="Ponto Direto Soluções Tecnológicas LTDA"/>
+</div>
+<div>
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">CNPJ</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="12.345.678/0001-90"/>
+</div>
+<div>
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">State Registration (IE)</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="110.220.330.440"/>
+</div>
+</div>
+</div>
+<!-- Branch Status Sidebar -->
+<div class="col-span-4 bg-blue-950 text-white p-6 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-6">
+<span class="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">ACTIVE</span>
+<span class="text-xs text-blue-300">ID: #FL-001</span>
+</div>
+<div class="relative w-32 h-32 mx-auto mb-6 bg-blue-900 rounded-full flex items-center justify-center overflow-hidden border-4 border-blue-800">
+<img class="object-cover w-full h-full opacity-80" data-alt="A modern storefront of a retail business with large glass windows and minimalist wooden decor. The lighting is bright and industrial, reflecting a professional high-end retail environment. The image uses a clean light mode aesthetic with subtle blue and orange accents consistent with a tech-driven point of sale system branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOO8v5gQ6Lq9BB0lBuvxsK6VbKl30QOHG09qMnSn6gocWnfEsMnqV6m3BZtBaenCgBbH4O0qXHCNT-sSbxN1u1PNqwaPq_mfiz4e91ZitSb80xXQiWBE2cZ0zgDOyoBEEm2l6ZMf2kImjCg5j1R2svSuLECTutwusc6fVeAHdy_T0mflDQzEMRTQyVXa-RKYVM3wkx0SteuglYUU814AJZdQWDQ6ezqlJxijddPJxi1lF6Nd2_ImzDjSCFUdZ3a_2skT7wC1ORx2U"/>
+<button class="absolute bottom-0 right-0 bg-orange-600 p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<div class="text-center">
+<h4 class="font-bold text-lg mb-1">Unidade Principal</h4>
+<p class="text-blue-300 text-xs uppercase">São Paulo, SP</p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-blue-800 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-blue-400">Created on:</span>
+<span>12/05/2021</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-blue-400">Last Update:</span>
+<span>Hoje às 09:41</span>
+</div>
+</div>
+</div>
+<!-- Contact & Location Card -->
+<div class="col-span-12 bg-white border border-slate-200 p-6 rounded-lg shadow-sm">
+<div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+<span class="material-symbols-outlined text-blue-900" data-icon="location_on">location_on</span>
+<h3 class="font-headline-md text-lg text-blue-900">Contact &amp; Address</h3>
+</div>
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-4">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">ZIP Code</label>
+<div class="flex gap-2">
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="04538-133"/>
+<button class="bg-slate-100 p-3 rounded-md text-blue-900 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+<div class="col-span-8">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Address</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="Avenida Brigadeiro Faria Lima, 3477"/>
+</div>
+<div class="col-span-4">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">City</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="São Paulo"/>
+</div>
+<div class="col-span-2">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">State</label>
+<select class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all">
+<option selected="">SP</option>
+<option>RJ</option>
+<option>MG</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Phone</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="text" value="(11) 5500-1000"/>
+</div>
+<div class="col-span-3">
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Contact Email</label>
+<input class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all" type="email" value="matriz@pontodireto.com.br"/>
+</div>
+</div>
+</div>
+<!-- Configuration Section -->
+<div class="col-span-12 grid grid-cols-2 gap-6">
+<div class="bg-white border border-slate-200 p-6 rounded-lg shadow-sm">
+<div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+<span class="material-symbols-outlined text-blue-900" data-icon="settings_applications">settings_applications</span>
+<h3 class="font-headline-md text-lg text-blue-900">Operational Settings</h3>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Default Tax Profile</label>
+<select class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all">
+<option selected="">Simples Nacional - Comércio</option>
+<option>Lucro Real - Varejo</option>
+<option>Lucro Presumido</option>
+</select>
+</div>
+<div>
+<label class="block font-label-bold text-xs uppercase text-slate-500 mb-2">Price List</label>
+<select class="w-full border-2 border-slate-200 focus:border-blue-900 focus:ring-0 rounded-md px-4 py-3 font-body-md transition-all">
+<option selected="">Tabela Padrão Varejo</option>
+<option>Tabela Promocional Fim de Semana</option>
+<option>Tabela Atacado</option>
+</select>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-slate-200 p-6 rounded-lg shadow-sm border-dashed">
+<div class="flex items-center gap-3 mb-6 border-b border-slate-200 pb-4">
+<span class="material-symbols-outlined text-slate-500" data-icon="security">security</span>
+<h3 class="font-headline-md text-lg text-slate-500">Security &amp; Compliance</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-white rounded border border-slate-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-semibold text-sm">Fiscal NFC-e Integration</span>
+</div>
+<div class="w-12 h-6 bg-orange-600 rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-white rounded border border-slate-200 opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400" data-icon="key">key</span>
+<span class="font-semibold text-sm">A1 Digital Certificate</span>
+</div>
+<span class="text-[10px] font-bold text-orange-600 uppercase">Expires in 12 days</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Spacer -->
+<div class="h-12"></div>
+</div>
+</div>
+</main>
+<script>
+    window.addEventListener('click', function(e) {
+        const menu = document.getElementById('branchMenu');
+        const btn = document.getElementById('branchDropdownBtn');
+        if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+</script></body></html>

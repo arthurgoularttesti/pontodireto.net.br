@@ -6,7 +6,11 @@
 	</button>
 	<div class="absolute left-0 mt-2 w-64 bg-white border border-slate-200 rounded-md shadow-xl z-[60] overflow-hidden animate-in fade-in zoom-in duration-150 hidden" id="branchMenu">
 		<div class="py-1">
-			<a class="flex items-center px-4 py-3 text-sm text-on-surface hover:bg-surface-container-high transition-colors" href="#">
+			<a class="flex items-center px-4 py-3 text-sm text-slate-600 hover:bg-surface-container-high transition-colors" href="#">
+				<span class="material-symbols-outlined mr-3 text-blue-900 scale-75" data-icon="public">public</span>
+				<span class="font-semibold">Todas as Filiais</span>
+			</a>
+			<a class="flex items-center px-4 py-3 text-sm text-on-surface hover:bg-surface-container-high transition-colors border-t border-slate-50" href="#">
 				<span class="material-symbols-outlined mr-3 text-orange-600 scale-75">store</span>
 				<span class="font-semibold">Matriz - São Paulo</span>
 				<span class="material-symbols-outlined ml-auto text-orange-600 text-sm">check_circle</span>
