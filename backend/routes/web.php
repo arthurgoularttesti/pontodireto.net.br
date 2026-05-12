@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 
 Route::prefix('login')->controller(LoginController::class)->group(function () {
 
@@ -32,6 +34,22 @@ Route::prefix('product')->name('product')->controller(ProductController::class)-
 });
 
 Route::prefix('client')->name('client')->controller(ClientController::class)->group(function () {
+
+	Route::any('/', 'index')->name('');
+	Route::any('/create', 'create')->name('.create');
+	Route::any('/edit/{id}', 'edit')->name('.edit');
+
+});
+
+Route::prefix('stock')->name('stock')->controller(StockController::class)->group(function () {
+
+	Route::any('/', 'index')->name('');
+	Route::any('/create', 'create')->name('.create');
+	Route::any('/edit/{id}', 'edit')->name('.edit');
+
+});
+
+Route::prefix('financial')->name('financial')->controller(FinancialController::class)->group(function () {
 
 	Route::any('/', 'index')->name('');
 	Route::any('/create', 'create')->name('.create');

@@ -32,9 +32,9 @@
 		<button class="p-2 text-slate-500 hover:bg-slate-50 rounded transition-colors cursor-pointer">
 			<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
 		</button> -->
-		<!-- <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
-		<button class="flex items-center gap-2 px-3 py-1.5 bg-blue-900 text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-800 transition-colors">
-			Fechar Caixa
-		</button> -->
+		<div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+		<a href="" class="flex items-center gap-2 px-3 py-1.5 bg-blue-900 text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-800 transition-colors">
+			&#35; Novo Pedido
+		</a>
 	</div>
 </div>
