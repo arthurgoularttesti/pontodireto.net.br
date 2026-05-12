@@ -16,5 +16,11 @@ use Illuminate\Database\Eloquent\Attributes\Appends;
 #[Table('products_volumes')]
 class ProductVolume extends Model
 {
-	//
+	const STATUS_ACTIVE			= 1;
+	const STATUS_INACTIVE		= 2;
+
+	public static $statuses		= [
+		self::STATUS_ACTIVE			=> 'Ativo',
+		self::STATUS_INACTIVE		=> 'Inativo',
+	];
 }
