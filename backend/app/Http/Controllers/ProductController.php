@@ -21,6 +21,7 @@ class ProductController extends Controller
 				(object) ['label'=>'Status', 'parser'=>function ($row) {return $row->status_html;}],
 				(object) ['label'=>'Categoria', 'parser'=>function ($row) {return $row->category_html;}],
 				(object) ['label'=>'Nível do Estoque', 'parser'=>function ($row) {return $row->stock_html;}],
+				(object) ['label'=>'Conversão de Volume', 'parser'=>function ($row) {return $row->volume_html;}],
 				(object) ['label'=>'Preço', 'parser'=>function ($row) {return $row->price_string;}],
 			],
 			// 'filters'		=> [1],

@@ -18,7 +18,7 @@ class LoginController extends Controller
 				// 'test'		=> ['required'],
 			]);
 
-			if ($validator->validated())
+			if (!$validator->fail())
 			{
 				return redirect()->route('dashboard');
 			}

@@ -136,6 +136,34 @@ class Product extends Model
 		);
 	}
 
+	protected function imageOrPlaceholderUrl() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				if (is_null($this->image))
+					return asset('no_image.png');
+				
+				return '';
+			},
+		);
+	}
+
+	protected function volumeHtml() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				$html = [];
+
+				foreach ($this->volume as $volume)
+					$html[] = '<div class="text-sm text-primary font-medium">' . $volume->name . ' = ' . $volume->amount . ' Unidades</div>';
+
+				return join('', $html);
+			},
+		);
+	}
+
 	public function category() : BelongsTo
 	{
 		return $this->belongsTo(ProductCategory::class);
