@@ -26,7 +26,7 @@ class ProductController extends Controller
 				(object) ['type'=>'edit', 'route'=>'product.edit'],
 			],
 			'pageActions'	=> [
-				(object) ['type'=>'button', 'label'=>'Adicionar Cliente', 'icon'=>'add', 'route'=>'product.create'],
+				(object) ['type'=>'button', 'label'=>'Adicionar Produto', 'icon'=>'add', 'route'=>'product.create'],
 			],
 		]);
 	}
@@ -43,7 +43,11 @@ class ProductController extends Controller
 
 	public function _edit (Request $request, Product $product)
 	{
-		return [$request, $product];
+		return view('product_edit', [
+			'title'			=> $product->exists ? 'Editando ' . $product->name : 'Novo Produto',
+			'description'	=> 'Altere as informações do produto',
+			'data'			=> $product,
+		]);
 	}
 
 	public function volume (Request $request)

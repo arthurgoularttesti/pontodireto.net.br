@@ -52,7 +52,7 @@ return new class extends Migration
 			$table->string('name')->nullable();
 			$table->string('sku', 64)->nullable();
 			$table->integer('amount')->nullable();
-			$table->string('image')->nullable();
+			$table->string('acronym')->nullable();
 			$table->float('mesure_weight')->default(0);
 			$table->float('mesure_width_x')->default(0);
 			$table->float('mesure_width_y')->default(0);
