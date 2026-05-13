@@ -38,7 +38,7 @@ class ProductController extends Controller
 
 	public function edit (Request $request, int $product)
 	{
-		return $this->_edit($request, Product::find($product));
+		return $this->_edit($request, Product::with(['category','volume'])->find($product));
 	}
 
 	public function _edit (Request $request, Product $product)
