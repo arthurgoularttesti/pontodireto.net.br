@@ -33,7 +33,7 @@ class Product extends Model
 	{
 		return Attribute::make(function () {
 
-			$icon = '<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-primary" data-icon="liquor">liquor</span></div>';
+			$icon = '<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-primary" data-icon="liquor">' . $this->category->icon . '</span></div>';
 			$name = '<div><div class="font-label-bold text-primary">' . $this->name . '</div><div class="text-xs text-on-surface-variant">SKU: ' . $this->sku . '</div></div>';
 
 			return '<div class="flex items-center gap-3">' . $icon . $name . '</div>';
@@ -44,7 +44,7 @@ class Product extends Model
 	{
 		return Attribute::make(function () {
 
-			return '<span class="px-2 py-1 bg-surface-container text-on-primary-fixed-variant font-label-bold text-[10px] uppercase tracking-tighter border border-outline-variant" style="background-color:' . $this->category->color . '; color:#fff;">' . $this->category->name . '</span>';
+			return '<span class="px-2 py-1 bg-surface-container text-on-primary-fixed-variant font-label-bold text-[10px] uppercase tracking-tighter border border-outline-variant" style="background-color:' . $this->category->background . '; color:' . $this->category->color . ';">' . $this->category->name . '</span>';
 		});
 	}
 	
@@ -52,38 +52,35 @@ class Product extends Model
 	{
 		return Attribute::make(function () {
 
-			$icon = '<div class="w-10 h-10 bg-surface rounded border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-primary" data-icon="liquor">liquor</span></div>';
-			$name = '<div><div class="font-label-bold text-primary">' . $this->name . '</div><div class="text-xs text-on-surface-variant">SKU: ' . $this->sku . '</div></div>';
+			$current = $this->stock_current;
 
-			// Stock High
-			// <div class="flex items-center gap-2">
-			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-			// <div class="w-3/4 h-full bg-green-500"></div>
-			// </div>
-			// <span class="font-label-bold text-xs text-green-700">142 units</span>
-			// </div>
+			// 'stock_critical','stock_minimal'
 
-			// Stock Low
-			// <div class="flex items-center gap-2">
-			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-			// <div class="w-3/4 h-full bg-green-500"></div>
-			// </div>
-			// <span class="font-label-bold text-xs text-green-700">142 units</span>
-			// </div>
+			if ($current <= 0)
+			{
+				return '<div class="flex items-center gap-2">
+					<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+						<div class="w-0.5 h-full bg-red-600"></div>
+					</div>
+					<span class="font-label-bold text-xs text-red-600">Fora de Estoque</span>
+				</div>';
+			}
 
-			// Stock Empty
-			// <div class="flex items-center gap-2">
-			// <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-			// <div class="w-0.5 h-full bg-red-600"></div>
-			// </div>
-			// <span class="font-label-bold text-xs text-red-600">OUT OF STOCK</span>
-			// </div>
+			if (!is_null($this->stock_minimal) && $current <= $this->stock_minimal)
+			{
+				return '<div class="flex items-center gap-2">
+					<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+						<div class="w-1/4 h-full bg-orange-500"></div>
+					</div>
+					<span class="font-label-bold text-xs text-orange-600">' . $current . ' unidade(s)</span>
+				</div>';
+			}
 
 			return '<div class="flex items-center gap-2">
 				<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
 					<div class="w-3/4 h-full bg-green-500"></div>
 				</div>
-				<span class="font-label-bold text-xs text-green-700">142 units</span>
+				<span class="font-label-bold text-xs text-green-700">' . $current . ' unidades</span>
 			</div>';
 		});
 	}
@@ -124,6 +121,13 @@ class Product extends Model
 	{
 		return Attribute::make(
 			get: fn () => 'R$ '. number_format($this->price, 2, ',', '.'),
+		);
+	}
+
+	protected function stockCurrent() : Attribute
+	{
+		return Attribute::make(
+			get: fn () => rand(0, 100),
 		);
 	}
 

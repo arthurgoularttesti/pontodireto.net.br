@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('name')->nullable();
 			$table->string('icon')->nullable();
+			$table->string('background')->nullable();
 			$table->string('color')->nullable();
 
 			$table->timestamps();
@@ -34,9 +35,7 @@ return new class extends Migration
 			$table->string('image')->nullable();
 			$table->decimal('price')->default(0);
 			$table->float('margin')->default(0);
-			$table->decimal('stock_critical')->nullable();
 			$table->decimal('stock_minimal')->nullable();
-			$table->decimal('stock_max')->nullable();
 
 			$table->timestamps();
 			$table->softDeletes();
@@ -52,6 +51,7 @@ return new class extends Migration
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('name')->nullable();
 			$table->string('sku', 64)->nullable();
+			$table->integer('amount')->nullable();
 			$table->string('image')->nullable();
 			$table->float('mesure_weight')->default(0);
 			$table->float('mesure_width_x')->default(0);

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\Appends;
 
-#[Fillable(['status','name','icon','color'])]
+#[Fillable(['status','name','icon','background','color'])]
 #[Hidden([])]
 #[Appends([])]
 #[Table('products_categories')]

@@ -16,10 +16,10 @@ class ProductSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		$category1 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Bebidas','icon'=>'local_bar','color'=>'#ea580c']);
-		$category2 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Petiscos','icon'=>'fastfood','color'=>'#1e3a8a']);
-		$category3 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Confeitaria','icon'=>'cake','color'=>'#db2777']);
-		$category4 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Mercearia','icon'=>'shopping_basket','color'=>'#475569']);
+		$category1 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Bebidas','icon'=>'liquor','background'=>'#ea580c','color'=>'#ffffff']);
+		$category2 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Petiscos','icon'=>'fastfood','background'=>'#1e3a8a','color'=>'#ffffff']);
+		$category3 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Confeitaria','icon'=>'cake','background'=>'#db2777','color'=>'#ffffff']);
+		$category4 = ProductCategory::create(['status'=>ProductCategory::STATUS_ACTIVE, 'name'=>'Mercearia','icon'=>'shopping_basket','background'=>'#475569','color'=>'#FFFFFF']);
 
 		$product1 = Product::create([
 			'category_id'		=> $category1->id,
@@ -29,9 +29,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_critical'	=> 50,
-			'stock_minimal'		=> 100,
-			'stock_max'			=> 1500,
+			'stock_minimal'		=> 10,
 		]);
 
 		$product2 = Product::create([
@@ -42,9 +40,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_critical'	=> 50,
-			'stock_minimal'		=> 100,
-			'stock_max'			=> 1500,
+			'stock_minimal'		=> 10,
 		]);
 
 		$product3 = Product::create([
@@ -55,15 +51,49 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_critical'	=> 50,
-			'stock_minimal'		=> 100,
-			'stock_max'			=> 1500,
+			'stock_minimal'		=> 10,
+		]);
+
+		$product4 = Product::create([
+			'category_id'		=> $category4->id,
+			'status'			=> Product::STATUS_ACTIVE,
+			'name'				=> 'BISC RECH PASSATEMPO PCT 150G CHOCOLATE',
+			'sku'				=> 'BISC-RECH-150',
+			'image'				=> null,
+			'price'				=> 3.2,
+			'margin'			=> 30,
+			'stock_minimal'		=> 10,
+		]);
+
+		$product5 = Product::create([
+			'category_id'		=> $category3->id,
+			'status'			=> Product::STATUS_ACTIVE,
+			'name'				=> 'CREAM CHEESE PHILADELPHIA 150G LIGHT',
+			'sku'				=> 'CREAM-CHEESE',
+			'image'				=> null,
+			'price'				=> 3.2,
+			'margin'			=> 30,
+			'stock_minimal'		=> 10,
+		]);
+
+		$product6 = Product::create([
+			'category_id'		=> $category2->id,
+			'status'			=> Product::STATUS_ACTIVE,
+			'name'				=> 'SALG MILHO CHEETOS LUA PCT 140G PARMESAO',
+			'sku'				=> 'CHEET-PARM',
+			'image'				=> null,
+			'price'				=> 3.2,
+			'margin'			=> 30,
+			'stock_minimal'		=> 10,
 		]);
 
 		ProductVolume::insert([
-			['product_id'=>$product1->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
-			['product_id'=>$product2->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
-			['product_id'=>$product3->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product1->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Engradado','amount'=>12, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product2->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Engradado','amount'=>12, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product3->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Engradado','amount'=>12, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product4->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>24, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product5->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>12, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product6->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>24, 'sku'=>null,'image'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 		]);
 	}
 }
