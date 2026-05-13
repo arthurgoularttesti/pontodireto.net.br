@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Attributes\Appends;
 use App\Models\ProductCategory;
 use App\Models\ProductVolume;
 
-#[Fillable(['category_id','status','name','sku','image','price','margin','stock_critical','stock_minimal','stock_max'])]
+#[Fillable(['category_id','status','name','sku','image','price','margin','criticalstock'])]
 #[Hidden(['category_id'])]
 #[Appends([])]
 #[Table('products')]
@@ -28,6 +28,13 @@ class Product extends Model
 		self::STATUS_ACTIVE			=> 'Ativo',
 		self::STATUS_INACTIVE		=> 'Inativo',
 	];
+
+	public function GetMediumPrice () : float
+	{
+		$mediumPrice = rand(0, 1000) / 10;
+
+		return $mediumPrice;
+	}
 
 	protected function nameHtml() : Attribute
 	{
@@ -54,8 +61,6 @@ class Product extends Model
 
 			$current = $this->stock_current;
 
-			// 'stock_critical','stock_minimal'
-
 			if ($current <= 0)
 			{
 				return '<div class="flex items-center gap-2">
@@ -66,7 +71,7 @@ class Product extends Model
 				</div>';
 			}
 
-			if (!is_null($this->stock_minimal) && $current <= $this->stock_minimal)
+			if (!is_null($this->criticalstock) && $current <= $this->criticalstock)
 			{
 				return '<div class="flex items-center gap-2">
 					<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">

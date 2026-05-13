@@ -23,4 +23,9 @@ class ProductCategory extends Model
 		self::STATUS_ACTIVE			=> 'Ativo',
 		self::STATUS_INACTIVE		=> 'Inativo',
 	];
+
+	public function scopeActive($query)
+	{
+		return $query->where('status', self::STATUS_ACTIVE);
+	}
 }

@@ -35,7 +35,7 @@ return new class extends Migration
 			$table->string('image')->nullable();
 			$table->decimal('price')->default(0);
 			$table->float('margin')->default(0);
-			$table->decimal('stock_minimal')->nullable();
+			$table->integer('criticalstock')->default(0);
 
 			$table->timestamps();
 			$table->softDeletes();

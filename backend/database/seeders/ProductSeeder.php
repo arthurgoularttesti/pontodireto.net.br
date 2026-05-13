@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		$product2 = Product::create([
@@ -40,7 +40,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		$product3 = Product::create([
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 6.5,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		$product4 = Product::create([
@@ -62,7 +62,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 3.2,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		$product5 = Product::create([
@@ -73,7 +73,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 3.2,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		$product6 = Product::create([
@@ -84,7 +84,7 @@ class ProductSeeder extends Seeder
 			'image'				=> null,
 			'price'				=> 3.2,
 			'margin'			=> 30,
-			'stock_minimal'		=> 10,
+			'criticalstock'		=> 10,
 		]);
 
 		ProductVolume::insert([
