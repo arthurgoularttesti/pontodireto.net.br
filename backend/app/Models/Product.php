@@ -157,7 +157,7 @@ class Product extends Model
 				$html = [];
 
 				foreach ($this->volume as $volume)
-					$html[] = '<div class="text-sm text-primary font-medium">' . $volume->name . ' = ' . $volume->amount . ' Unidades</div>';
+					$html[] = '<div class="text-sm text-primary font-medium">' . $volume->name . ' = ' . number_format($volume->amount, 0, ',', '.') . ' Unidades</div>';
 
 				return join('', $html);
 			},

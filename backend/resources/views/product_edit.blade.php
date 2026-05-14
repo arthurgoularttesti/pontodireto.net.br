@@ -12,7 +12,7 @@
 				<h2 class="font-headline-lg text-headline-lg text-primary">{{ @$title }}</h2>
 				<p class="font-body-md text-body-md text-on-surface-variant">{{ @$description }}</p>
 			</div>
-			<div class="flex gap-4">
+			<div class="flex gap-4 hidden sm:block md:block">
 				<a href="{{ route('product') }}" class="px-6 py-target-min font-label-bold text-label-bold border-2 border-outline-variant text-primary rounded-lg hover:bg-surface-container transition-all">
 					Cancelar
 				</a>
@@ -105,87 +105,6 @@
 					</div>
 				</div>
 			</section>
-
-			<!-- Critical Volume Management -->
-			
-			@if ($data->exists)
-
-				<section class="col-span-12 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
-					<div class="flex items-center gap-3 mb-6 justify-between">
-						<div class="flex items-center gap-3">
-							<span class="material-symbols-outlined text-orange-600">inventory</span>
-							<h3 class="font-headline-md text-headline-md">Gestão de Volumes</h3>
-						</div>
-						<a href="{{ route('product.volume.create', [$data->id]) }}" class="flex gap-2 px-3 py-1.5 bg-blue-950 text-white text-[10px] font-bold uppercase tracking-widest rounded hover:bg-blue-800 transition-colors">
-							&#35; Adicionar Novo Volume
-						</a>
-					</div>
-					<div class="space-y-8">
-						<div class="bg-surface-container-lowest overflow-hidden">
-						
-							<div class="divide-y divide-outline-variant">
-
-								@forelse($data->volume as $volume)
-
-									<!-- Item 1 -->
-									<div class="p-6 hover:bg-surface-container-low transition-colors group">
-										<div class="flex items-center justify-between">
-											<div class="flex gap-4">
-												<div class="w-12 h-12 rounded bg-primary-container text-white flex items-center justify-center font-black">x12</div>
-												<div>
-													<div class="flex items-center gap-2">
-														<h4 class="font-headline-md text-primary">{{ $volume->name }}</h4>
-														<span class="px-2 py-0.5 bg-surface-variant text-primary text-[10px] font-bold rounded">UNIDADES POR VOLUME: {{ $volume->amount }}</span>
-													</div>
-													<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">SKU: {{ $volume->sku }}</p>
-												</div>
-											</div>
-											<div class="text-right">
-												<p class="text-xs text-on-surface-variant font-medium">Preço Proporcional</p>
-												<p class="text-headline-md text-primary font-bold">R$ 222,00</p>
-											</div>
-										</div>
-										<div class="mt-4 flex items-center justify-between">
-											<div class="flex gap-3">
-												<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
-													<span class="material-symbols-outlined text-[14px]">fitness_center</span> 6.2 kg
-												</div>
-												<div class="flex items-center gap-1 text-[11px] font-medium px-2 py-1 bg-surface-container rounded border border-outline-variant">
-													<span class="material-symbols-outlined text-[14px]">square_foot</span> 40x25x20cm
-												</div>
-											</div>
-											<div class="flex gap-2">
-												<button class="material-symbols-outlined p-2 text-primary hover:bg-primary hover:text-white rounded-lg transition-all border border-primary">edit</button>
-												<button class="material-symbols-outlined p-2 text-error hover:bg-error hover:text-white rounded-lg transition-all border border-error">delete</button>
-											</div>
-										</div>
-										
-										<!-- Visual Cost Indicator -->
-										<div class="mt-4 pt-4 border-t border-dashed border-outline-variant">
-											<div class="flex justify-between items-center mb-1">
-												<span class="text-[10px] font-bold uppercase text-on-surface-variant">Eficiência de Custo por Unidade</span>
-												<span class="text-[10px] font-bold text-secondary">R$ 18,50 / UN</span>
-											</div>
-											<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
-												<div class="h-full bg-secondary-container" style="width: 100%"></div>
-											</div>
-										</div>
-									</div>
-
-								@empty
-
-									<div class="p-6 hover:bg-surface-container-low transition-colors group">
-										<p class="text-center">Nenhum volume cadastrado</p>
-									</div>
-
-								@endforelse
-
-							</div>
-						</div>
-					</div>
-				</section>
-
-			@endif
 			
 		</div>
 		<!-- Action Footer Mobile Only (Visible on small screens) -->

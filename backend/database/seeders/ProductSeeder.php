@@ -92,7 +92,9 @@ class ProductSeeder extends Seeder
 			['product_id'=>$product2->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Engradado','amount'=>12, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 			['product_id'=>$product3->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Engradado','amount'=>12, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 			['product_id'=>$product4->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>24, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product4->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Pallet','amount'=>2016, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 			['product_id'=>$product5->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>12, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
+			['product_id'=>$product5->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Pallet','amount'=>300, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 			['product_id'=>$product6->id,'status'=>ProductVolume::STATUS_ACTIVE,'name'=>'Caixa','amount'=>24, 'sku'=>null,'mesure_weight'=>0,'mesure_width_x'=>0,'mesure_width_y'=>0,'mesure_width_z'=>0,'discount'=>0],
 		]);
 	}
