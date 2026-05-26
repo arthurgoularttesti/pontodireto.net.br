@@ -1,8 +1,8 @@
 <div class="relative group">
 	<button class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary transition-colors cursor-pointer group">
 		<div class="text-right hidden sm:block">
-			<p class="font-inter text-xs font-semibold tracking-tight text-white">{Nome do Usuário}</p>
-			<p class="text-[9px] uppercase text-green-400 font-bold tracking-wider">{Perfil do Usuário}</p>
+			<p class="font-inter text-xs font-semibold tracking-tight text-white">Arthur Goulart</p>
+			<p class="text-[9px] uppercase text-green-400 font-bold tracking-wider">Administrador</p>
 		</div>
 		<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-900">expand_more</span>
 	</button>
