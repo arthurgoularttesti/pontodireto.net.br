@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 			[
 				'profile_id'	=> $admin->id,
 				'name'			=> 'Mercado & Distribuidora Mello',
-				'username'		=> 'melo',
+				'username'		=> 'mello',
 				'password'		=> Hash::make('123456'),
 			],
 		]);

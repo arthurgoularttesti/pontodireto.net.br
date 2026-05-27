@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Closure;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -11,15 +16,23 @@ class LoginController extends Controller
 	{
 		if ($request->isMethod('post'))
 		{
+			$user = User::FindByUsername($request->input('username'))->first();
+
 			$validator = Validator::make($request->all(), [
 				'username'	=> ['required', 'max:255'],
-				'password'	=> ['required', 'max:255'],
 				'connected'	=> ['nullable'],
-				// 'test'		=> ['required'],
+				'password'	=> ['required', 'max:255', function (string $attribute, mixed $value, Closure $fail) use ($user, $request) {
+
+					if (is_null($user) || !$user->CheckPassword($request->input('password')))
+						return $fail('Usuário ou senha incorreta');
+
+				}],
 			]);
 
-			if (!$validator->fail())
+			if (!$validator->fails())
 			{
+				Auth::login($user);
+
 				return redirect()->route('dashboard');
 			}
 
@@ -31,6 +44,8 @@ class LoginController extends Controller
 
 	public function logout ()
 	{
+		Auth::logout();
+
 		return redirect()->route('login');
 	}
 }

@@ -16,13 +16,13 @@ Route::prefix('login')->controller(LoginController::class)->group(function () {
 
 });
 
-Route::prefix('dashboard')->controller(DashboardController::class)->group(function () {
+Route::middleware('auth')->prefix('dashboard')->controller(DashboardController::class)->group(function () {
 
 	Route::any('/', 'index')->name('dashboard');
 
 });
 
-Route::prefix('product')->name('product')->controller(ProductController::class)->group(function () {
+Route::middleware('auth')->prefix('product')->name('product')->controller(ProductController::class)->group(function () {
 
 	Route::any('/', 'index')->name('');
 	Route::any('/create', 'create')->name('.create');
@@ -33,7 +33,7 @@ Route::prefix('product')->name('product')->controller(ProductController::class)-
 
 });
 
-Route::prefix('client')->name('client')->controller(ClientController::class)->group(function () {
+Route::middleware('auth')->prefix('client')->name('client')->controller(ClientController::class)->group(function () {
 
 	Route::any('/', 'index')->name('');
 	Route::any('/create', 'create')->name('.create');
@@ -41,7 +41,7 @@ Route::prefix('client')->name('client')->controller(ClientController::class)->gr
 
 });
 
-Route::prefix('stock')->name('stock')->controller(StockController::class)->group(function () {
+Route::middleware('auth')->prefix('stock')->name('stock')->controller(StockController::class)->group(function () {
 
 	Route::any('/', 'index')->name('');
 	Route::any('/create', 'create')->name('.create');
@@ -49,7 +49,7 @@ Route::prefix('stock')->name('stock')->controller(StockController::class)->group
 
 });
 
-Route::prefix('financial')->name('financial')->controller(FinancialController::class)->group(function () {
+Route::middleware('auth')->prefix('financial')->name('financial')->controller(FinancialController::class)->group(function () {
 
 	Route::any('/', 'index')->name('');
 	Route::any('/create', 'create')->name('.create');
