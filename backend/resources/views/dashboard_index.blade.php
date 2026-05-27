@@ -3,6 +3,8 @@
 @section('title', @$title)
 @section('content')
 
+	@if (false)
+
 	<!-- Dashboard Canvas -->
 	<div class="flex-1 overflow-y-auto p-6 custom-scrollbar bg-surface-bright">
 		<div class="mx-auto space-y-6">
@@ -316,5 +318,7 @@
 	<!-- <button class="fixed bottom-8 right-8 w-16 h-16 bg-secondary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform z-50">
 		<span class="material-symbols-outlined text-[32px]" data-icon="add_shopping_cart">add_shopping_cart</span>
 	</button> -->
+
+	@endif
 
 @endsection

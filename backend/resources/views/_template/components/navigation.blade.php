@@ -13,6 +13,12 @@
 
 				@foreach (config('menu') as $menu)
 
+					@if(!is_null($menu->permission) && !auth()->user()->CheckPermission($menu->permission))
+
+						@continue
+
+					@endif
+
 					<a class="{{ request()->segment(1) == @$menu->route ? 'bg-orange-600 text-white transition-transform scale-95' : 'text-blue-200 hover:bg-blue-900 transition-all duration-150' }} px-3 py-2 flex items-center gap-2" href="{{ route($menu->route) }}">
 
 						@if(isset($menu->icon) && !is_null($menu->icon) && !empty($menu->icon))
