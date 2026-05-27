@@ -24,9 +24,19 @@ class Product extends Model
 	const STATUS_ACTIVE			= 1;
 	const STATUS_INACTIVE		= 2;
 
+	const PRICEUNITS_UNITS		= 1;
+	const PRICEUNITS_KG			= 2;
+	const PRICEUNITS_LT			= 3;
+
 	public static $statuses		= [
 		self::STATUS_ACTIVE			=> 'Ativo',
 		self::STATUS_INACTIVE		=> 'Inativo',
+	];
+
+	public static $priceUnits	= [
+		self::PRICEUNITS_UNITS		=> 'Unidades',
+		self::PRICEUNITS_KG			=> 'Kilos (Kg)',
+		self::PRICEUNITS_LT			=> 'Litros (L)',
 	];
 
 	public function GetMediumPrice () : float

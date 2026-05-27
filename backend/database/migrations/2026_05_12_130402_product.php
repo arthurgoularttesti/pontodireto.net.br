@@ -33,9 +33,14 @@ return new class extends Migration
 			$table->id();
 			$table->bigInteger('creator_id')->unsigned()->nullable();
 			$table->bigInteger('category_id')->unsigned();
+			$table->tinyInteger('container')->unsigned()->nullable();
+			$table->tinyInteger('scale')->unsigned()->nullable();
+			$table->tinyInteger('price_units')->unsigned()->nullable();
 			$table->tinyInteger('status')->unsigned()->nullable();
-			$table->string('name')->nullable();
 			$table->string('sku', 64)->nullable();
+			$table->string('name')->nullable();
+			$table->string('description_short')->nullable();
+			$table->text('description_long')->nullable();
 			$table->string('image')->nullable();
 			$table->decimal('price')->default(0);
 			$table->float('margin')->default(0);
