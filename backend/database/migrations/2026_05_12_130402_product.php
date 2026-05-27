@@ -33,6 +33,7 @@ return new class extends Migration
 			$table->id();
 			$table->bigInteger('creator_id')->unsigned()->nullable();
 			$table->bigInteger('category_id')->unsigned();
+			$table->tinyInteger('type')->unsigned()->nullable();
 			$table->tinyInteger('container')->unsigned()->nullable();
 			$table->tinyInteger('scale')->unsigned()->nullable();
 			$table->tinyInteger('price_units')->unsigned()->nullable();
@@ -77,6 +78,18 @@ return new class extends Migration
 			$table->foreign('creator_id')->references('id')->on('users');
 		
 		});
+
+		Schema::create('log_products', function (Blueprint $table) {
+
+			$table->id();
+			$table->bigInteger('entity_id')->unsigned();
+			$table->tinyInteger('type')->unsigned();
+			$table->timestamp('date')->useCurrent();
+			$table->json('data');
+
+			$table->foreign('entity_id')->references('id')->on('products');
+		
+		});
 	}
 
 	/**
@@ -84,6 +97,8 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
+		Schema::dropIfExists('log_products');
+
 		Schema::dropIfExists('products_volumes');
 		Schema::dropIfExists('products');
 		Schema::dropIfExists('products_categories');

@@ -11,18 +11,26 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\Appends;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+
+use App\Observers\ProductObserver;
 
 use App\Models\ProductCategory;
 use App\Models\ProductVolume;
 
-#[Fillable(['category_id','status','name','sku','image','price','margin','criticalstock'])]
-#[Hidden(['category_id'])]
+#[Fillable(['creator_id','category_id','type','container','scale','price_units','status','sku','name','description_short','description_long','image','price','margin','criticalstock'])]
+#[Hidden(['creator_id','category_id'])]
 #[Appends([])]
 #[Table('products')]
+#[ObservedBy([ProductObserver::class])]
 class Product extends Model
 {
 	const STATUS_ACTIVE			= 1;
 	const STATUS_INACTIVE		= 2;
+
+	const TYPE_PHISICAL			= 1;
+	const TYPE_DIGITAL			= 2;
+	const TYPE_SERVICE			= 3;
 
 	const PRICEUNITS_UNITS		= 1;
 	const PRICEUNITS_KG			= 2;
