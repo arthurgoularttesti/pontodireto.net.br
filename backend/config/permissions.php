@@ -2,6 +2,11 @@
 
 return [
 
+	'user.view'						=> 'Pode ver a lista de usuários',
+	'user.create'					=> 'Pode adicionar um novo usuário ao sistema',
+	'user.edit'						=> 'Pode editar usuários que não tenham sido criados por ele mesmo',
+	'user.delete'					=> 'Pode deletar usuários que não tenham sido criados por ele mesmo',
+
 	'product.view'					=> 'Pode ver a lista de produtos',
 	'product.create'				=> 'Pode criar um novo produto',
 	'product.edit'					=> 'Pode editar produtos que não tenham sido criados por ele mesmo',
