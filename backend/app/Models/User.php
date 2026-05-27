@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
+#[Fillable(['profile_id', 'name', 'email', 'password'])]
+#[Hidden(['profile_id', 'password', 'remember_token'])]
 #[Table('users')]
 class User extends Authenticatable
 {

@@ -14,6 +14,7 @@ return new class extends Migration
 		Schema::create('products_categories', function (Blueprint $table) {
 
 			$table->id();
+			$table->bigInteger('creator_id')->unsigned()->nullable();
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('name')->nullable();
 			$table->string('icon')->nullable();
@@ -22,12 +23,15 @@ return new class extends Migration
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->foreign('creator_id')->references('id')->on('users');
 		
 		});
 		
 		Schema::create('products', function (Blueprint $table) {
 
 			$table->id();
+			$table->bigInteger('creator_id')->unsigned()->nullable();
 			$table->bigInteger('category_id')->unsigned();
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('name')->nullable();
@@ -41,12 +45,14 @@ return new class extends Migration
 			$table->softDeletes();
 
 			$table->foreign('category_id')->references('id')->on('products_categories');
+			$table->foreign('creator_id')->references('id')->on('users');
 		
 		});
 
 		Schema::create('products_volumes', function (Blueprint $table) {
 
 			$table->id();
+			$table->bigInteger('creator_id')->unsigned()->nullable();
 			$table->bigInteger('product_id')->unsigned();
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('name')->nullable();
@@ -63,6 +69,7 @@ return new class extends Migration
 			$table->softDeletes();
 
 			$table->foreign('product_id')->references('id')->on('products');
+			$table->foreign('creator_id')->references('id')->on('users');
 		
 		});
 	}
