@@ -49,8 +49,16 @@
 							
 						</select>
 					</div>
+					<div class="col-span-4">
+						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Descrição Reduzida do Produto</label>
+						<input type="text" name="description_short" value="{{ old('description_short', $data->description_short) }}" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md"  />
+					</div>
+					<div class="col-span-4">
+						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Descrição Comercial do Produto</label>
+						<textarea type="text" name="description_long" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md">{{ old('description_long', $data->description_long) }}</textarea>
+					</div>
 					<div class="col-span-2">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">SKU / Barcode</label>
+						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Código de Barras</label>
 						<div class="relative">
 							<input type="text" name="sku" value="{{ old('sku', $data->sku) }}" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md pr-12" />
 							<span class="material-symbols-outlined absolute right-3 top-3 text-outline">barcode_scanner</span>
@@ -79,7 +87,7 @@
 			</section>
 
 			<!-- Pricing Section -->
-			<section class="col-span-12 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
+			<section class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
 				<div class="flex items-center gap-3 mb-6">
 					<span class="material-symbols-outlined text-orange-600">payments</span>
 					<h3 class="font-headline-md text-headline-md">Preço</h3>
@@ -104,6 +112,71 @@
 						<p class="text-xs text-secondary font-label-bold mt-2">Lucro esperado: R$ 3.83 por unidade</p>
 					</div>
 				</div>
+			</section>
+
+			<section class="col-span-12 lg:col-span-4 bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col max-h-[600px]">
+				<div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<span class="material-symbols-outlined text-primary text-xl">history</span>
+						<h2 class="font-label-bold text-primary uppercase tracking-tight">Histórico de Alterações</h2>
+					</div>
+					<span class="bg-slate-200 text-slate-600 text-[10px] px-2 py-0.5 rounded-full font-bold">4 ENTRADAS</span>
+				</div>
+				<div class="p-0 overflow-y-auto custom-scrollbar flex-1">
+					<div class="divide-y divide-slate-50">
+						
+						<!-- Log Entry 1 -->
+						<div class="p-4 hover:bg-slate-50 transition-all cursor-default">
+							<div class="flex items-start justify-between mb-2">
+								<div class="flex items-center gap-2">
+									<div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold">JS</div>
+									<span class="text-sm font-bold text-primary">João Silva</span>
+								</div>
+								<span class="text-[10px] text-slate-400 font-medium">24/10/2023 14:30</span>
+							</div>
+							<p class="text-xs text-slate-500 pl-10">Campos alterados: <span class="font-semibold text-secondary">Preço, Descrição</span></p>
+						</div>
+						
+						<!-- Log Entry 2 -->
+						<div class="p-4 hover:bg-slate-50 transition-all cursor-default">
+							<div class="flex items-start justify-between mb-2">
+								<div class="flex items-center gap-2">
+									<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">MC</div>
+									<span class="text-sm font-bold text-primary">Maria Costa</span>
+								</div>
+								<span class="text-[10px] text-slate-400 font-medium">20/10/2023 11:15</span>
+							</div>
+							<p class="text-xs text-slate-500 pl-10">Campos alterados: <span class="font-semibold text-secondary">Estoque Mínimo, Categoria</span></p>
+						</div>
+						
+						<!-- Log Entry 3 -->
+						<div class="p-4 hover:bg-slate-50 transition-all cursor-default opacity-70">
+							<div class="flex items-start justify-between mb-2">
+								<div class="flex items-center gap-2">
+									<div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold">SYS</div>
+									<span class="text-sm font-bold text-primary">System Autom.</span>
+								</div>
+								<span class="text-[10px] text-slate-400 font-medium">15/10/2023 03:00</span>
+							</div>
+							<p class="text-xs text-slate-500 pl-10">Sincronização de estoque efetuada.</p>
+						</div>
+						
+						<!-- Log Entry 4 -->
+						<div class="p-4 hover:bg-slate-50 transition-all cursor-default opacity-70">
+							<div class="flex items-start justify-between mb-2">
+								<div class="flex items-center gap-2">
+									<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">MC</div>
+									<span class="text-sm font-bold text-primary">Maria Costa</span>
+								</div>
+								<span class="text-[10px] text-slate-400 font-medium">10/10/2023 09:45</span>
+							</div>
+							<p class="text-xs text-slate-500 pl-10">Produto criado no sistema.</p>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="p-4 border-t border-slate-100 text-center">
+					<button class="text-xs text-primary font-bold hover:underline">Ver Histórico Completo</button>
+				</div> -->
 			</section>
 			
 		</div>
