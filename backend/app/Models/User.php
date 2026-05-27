@@ -19,6 +19,20 @@ class User extends Authenticatable
 {
 	protected $with			= ['profile'];
 
+	public function CheckPermission (string|array $permissions) : bool
+	{
+		if (!is_array($permissions))
+			$permissions = [$permissions];
+
+		foreach ($permissions as $permission)
+		{
+			if (in_array($permission, $this->profile->permissions))
+				return true;
+		}
+
+		return false;
+	}
+
 	public function CheckPassword (string $password) : bool
 	{
 		if (is_null($this->password))
