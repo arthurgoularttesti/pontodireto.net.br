@@ -18,7 +18,7 @@ use App\Observers\ProductObserver;
 use App\Models\ProductCategory;
 use App\Models\ProductVolume;
 
-#[Fillable(['creator_id','category_id','type','container','scale','price_units','status','sku','name','description_short','description_long','image','price','margin','criticalstock'])]
+#[Fillable(['creator_id','category_id','type','container','scale','highlight','price_units','status','sku','name','description_short','description_long','image','price','margin','criticalstock'])]
 #[Hidden(['creator_id','category_id'])]
 #[Appends([])]
 #[Table('products')]

@@ -38,6 +38,7 @@ return new class extends Migration
 			$table->tinyInteger('scale')->unsigned()->nullable();
 			$table->tinyInteger('price_units')->unsigned()->nullable();
 			$table->tinyInteger('status')->unsigned()->nullable();
+			$table->tinyInteger('highlight')->unsigned()->nullable();
 			$table->string('sku', 64)->nullable();
 			$table->string('name')->nullable();
 			$table->string('description_short')->nullable();

@@ -24,7 +24,7 @@
 
 		<!-- Bento Grid Layout -->
 		<div class="grid grid-cols-12 gap-gutter">
-			
+
 			<!-- Basic Info Section -->
 			<section class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
 				<div class="flex items-center gap-3 mb-6">
@@ -80,7 +80,7 @@
 				</div>
 			</section>
 			
-			<!-- Product Image/Preview (Decorative Bento Element) -->
+			<!-- Product Image/Preview -->
 			<section class="col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center relative overflow-hidden group">
 				<img src="{{ $data->image_or_placeholder_url }}" alt="Imagem do Produto" class="w-48 h-48 object-cover rounded-full border-4 border-white shadow-xl mb-4 z-10" data-alt="Close-up of a craft beer bottle with a minimalist label on a dark textured background with dramatic lighting" />
 				<input type="file" name="image" accept="image/*" />
