@@ -61,10 +61,10 @@ class ProductController extends Controller
 
 			if (!$validator->fails())
 			{
-				return ['validou', $request];
+				return ['validou', $request->all()];
 			}
 
-			return ['não validou', $request];
+			return ['não validou', $request->all()];
 		}
 
 		return view('product_edit', [

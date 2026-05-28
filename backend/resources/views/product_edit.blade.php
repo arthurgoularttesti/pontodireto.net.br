@@ -27,63 +27,68 @@
 
 			<!-- Basic Info Section -->
 			<section class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-8 shadow-sm">
+				
 				<div class="flex items-center gap-3 mb-6">
 					<span class="material-symbols-outlined text-orange-600">info</span>
 					<h3 class="font-headline-md text-headline-md">Informações Básicas</h3>
 				</div>
-				<div class="grid grid-cols-3 md:grid-cols-4 gap-6">
-					<div class="col-span-3">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Nome do Produto</label>
-						<input type="text" name="name" value="{{ old('name', $data->name) }}" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md"  />
-					</div>
-					<div>
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Status</label>
-						<select name="status" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md appearance-none">
-							<option disabled hidden {{ empty(old('status', $data->status)) ? 'selected' : '' }}>Escolha um estado</option>
+				
+				<div class="grid grid-cols-4 md:grid-cols-4 gap-6">
+					
+					@include('_components.text', [
+						'columns'		=> 3,
+						'label'			=> 'Nome do Produto',
+						'field'			=> 'name',
+						'data'			=> $data,
+					])
+					
+					@include('_components.select', [
+						'columns'		=> 1,
+						'label'			=> 'Status',
+						'placeholder'	=> 'Escolha um estado',
+						'field'			=> 'status',
+						'data'			=> $data,
+						'options'		=> $statuses,
+					])
 
-							@foreach ($statuses as $value => $label)
+					@include('_components.text', [
+						'columns'		=> 4,
+						'label'			=> 'Descrição Reduzida do Produto',
+						'field'			=> 'description_short',
+						'data'			=> $data,
+					])
 
-								<option value="{{ $value }}" {{ old('status', $data->status) == $value ? 'selected' : '' }}>{{ $label }}</option>
+					@include('_components.textarea', [
+						'columns'		=> 4,
+						'label'			=> 'Descrição Comercial do Produto',
+						'field'			=> 'description_long',
+						'data'			=> $data,
+					])
+					
+					@include('_components.text', [
+						'columns'		=> 2,
+						'label'			=> 'Código de Barras',
+						'field'			=> 'sku',
+						'data'			=> $data,
+						'icon'			=> 'barcode_scanner',
+					])
 
-							@endforeach
-							
-						</select>
-					</div>
-					<div class="col-span-4">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Descrição Reduzida do Produto</label>
-						<input type="text" name="description_short" value="{{ old('description_short', $data->description_short) }}" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md"  />
-					</div>
-					<div class="col-span-4">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Descrição Comercial do Produto</label>
-						<textarea type="text" name="description_long" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md">{{ old('description_long', $data->description_long) }}</textarea>
-					</div>
-					<div class="col-span-2">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Código de Barras</label>
-						<div class="relative">
-							<input type="text" name="sku" value="{{ old('sku', $data->sku) }}" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md pr-12" />
-							<span class="material-symbols-outlined absolute right-3 top-3 text-outline">barcode_scanner</span>
-						</div>
-					</div>
-					<div class="col-span-3 md:col-span-2">
-						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Categoria</label>
-						<select name="category_id" class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-body-md text-body-md appearance-none">
-							<option disabled hidden {{ empty(old('category_id', $data->category_id)) ? 'selected' : '' }}>Escolha uma categoria</option>
-
-							@foreach ($categories as $category)
-
-								<option value="{{ $category->id }}" {{ old('category_id', $data->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-
-							@endforeach
-							
-						</select>
-					</div>
+					@include('_components.select', [
+						'columns'		=> 2,
+						'label'			=> 'Categoria',
+						'placeholder'	=> 'Escolha uma categoria',
+						'field'			=> 'category_id',
+						'data'			=> $data,
+						'options'		=> $categories->keyBy('id')->map(function ($item) {return $item->name;}),
+					])
+					
 				</div>
 			</section>
 			
 			<!-- Product Image/Preview -->
 			<section class="col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center relative overflow-hidden group">
 				<img src="{{ $data->image_or_placeholder_url }}" alt="Imagem do Produto" class="w-48 h-48 object-cover rounded-full border-4 border-white shadow-xl mb-4 z-10" data-alt="Close-up of a craft beer bottle with a minimalist label on a dark textured background with dramatic lighting" />
-				<input type="file" name="image" accept="image/*" />
+				<input class="w-full" type="file" name="image" accept="image/*" />
 			</section>
 
 			<!-- Pricing Section -->
