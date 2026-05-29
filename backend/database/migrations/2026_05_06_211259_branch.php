@@ -52,6 +52,7 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
+		Schema::dropIfExists('branches_users');
 		Schema::dropIfExists('branches');
 	}
 };

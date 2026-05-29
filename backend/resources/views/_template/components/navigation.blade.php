@@ -15,7 +15,7 @@
 
 				@foreach (config('menu') as $menu)
 
-					@if(($menu->branch && $hasBranch) && (!is_null($menu->permission) && !auth()->user()->CheckPermission($menu->permission)))
+					@if(!is_null($menu->permission) && !auth()->user()->CheckPermission($menu->permission))
 
 						@continue
 
