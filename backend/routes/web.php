@@ -24,12 +24,12 @@ Route::middleware('auth')->prefix('dashboard')->controller(DashboardController::
 
 Route::middleware('auth')->prefix('product')->name('product')->controller(ProductController::class)->group(function () {
 
-	Route::any('/', 'index')->name('');
+	Route::any('/', 'list')->name('');
 	Route::any('/create', 'create')->name('.create');
 	Route::any('/edit/{id}', 'edit')->name('.edit');
-	Route::any('/volume/{id}', 'volume')->name('.volume.list');
-	Route::any('/volume/create/{id}', 'volume')->name('.volume.create');
-	Route::any('/volume/edit/{id}', 'volume')->name('.volume.edit');
+	Route::any('/volume/{id}', 'volume_list')->name('.volume.list');
+	Route::any('/volume/create/{id}', 'volume_create')->name('.volume.create');
+	Route::any('/volume/edit/{id}', 'volume_edit')->name('.volume.edit');
 
 });
 

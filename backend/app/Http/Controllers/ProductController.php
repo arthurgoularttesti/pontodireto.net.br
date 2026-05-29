@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\Product;
+use App\Models\ProductVolume;
 
 class ProductController extends Controller
 {
-	public function index (Request $request)
+	public function list (Request $request)
 	{
 		return view('_template.page_list', [
 			'title'			=> 'Lista de Produtos',
@@ -95,8 +96,35 @@ class ProductController extends Controller
 		]);
 	}
 
-	public function volume (Request $request)
+	public function volume_list (Request $request, int $product)
 	{
+		$product = Product::findOrFail($product);
 
+		return view('product_volume_list', [
+			'title'			=> 'Lista de Volumes do Produto ' . $product->name,
+			'description'	=> 'Gerencie a organização de volumes/empacotamento dos produtos',
+			'volumes'		=> ProductVolume::FromProduct($product)->get(),
+		]);
+	}
+
+	public function volume_create (Request $request, int $product)
+	{
+		$product = Product::with(['volumes'])->findOrFail($product);
+		$volume = new ProductVolume();
+
+		return $this->volume__edit($request, $product, $volume);
+	}
+
+	public function volume_edit (Request $request, int $product, int $volume)
+	{
+		$product = Product::with(['volumes'])->findOrFail($product);
+		$volume = ProductVolume::findOrFail($volume);
+
+		return $this->volume__edit($request, $product, $volume);
+	}
+
+	public function volume__edit (Request $request, Product $product, ProductVolume $volume)
+	{
+		return [$request->all(), $product, $volume];
 	}
 }
