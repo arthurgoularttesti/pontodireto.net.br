@@ -7,7 +7,7 @@
 			<span class="font-label-bold text-on-surface">{{ auth()->user()->CurrentBranch()->full_label_string }}</span>
 		@else
 			<span class="material-symbols-outlined mr-3 text-blue-900 scale-75" data-icon="public">public</span>
-			<span class="font-label-bold text-on-surface">Todas as Filiais</span>
+			<span class="font-label-bold text-on-surface">Visualização Global</span>
 		@endif
 	
 		<span class="material-symbols-outlined text-slate-400" data-icon="expand_more">expand_more</span>
@@ -18,7 +18,7 @@
 		<div class="py-1">
 			<a class="flex items-center px-4 py-3 text-sm text-slate-600 hover:bg-surface-container-high transition-colors" href="#">
 				<span class="material-symbols-outlined mr-3 text-blue-900 scale-75" data-icon="public">public</span>
-				<span class="font-semibold">Todas as Filiais</span>
+				<span class="font-semibold">Visualização Global</span>
 				@if (is_null(auth()->user()->CurrentBranch()))
 					<span class="material-symbols-outlined ml-auto text-orange-600 text-sm">check_circle</span>
 				@endif
