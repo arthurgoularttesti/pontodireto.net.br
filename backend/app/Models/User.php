@@ -21,6 +21,24 @@ class User extends Authenticatable
 {
 	protected $with			= ['profile', 'branches'];
 
+	public function CurrentBranch () : ?Branch
+	{
+		$config = $this->config;
+
+		if (!isset($config->branch) || is_null($config->branch))
+		{
+			if ($this->branches->count() <= 0)
+			return null;
+
+			$config->branch = $this->branches->first();
+			$this->config = $config;
+
+			$this->save();
+		}
+
+		return @$config->branch;
+	}
+
 	public function CheckPermission (string|array $permissions) : bool
 	{
 		if (!is_array($permissions))
