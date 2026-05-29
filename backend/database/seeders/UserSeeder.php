@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
 		$user = User::create([
 			'profile_id'	=> $profile->id,
-			'name'			=> 'Mercado & Distribuidora Mello',
+			'name'			=> 'Mello Admin',
 			'username'		=> 'mello',
 			'password'		=> Hash::make('123456'),
 		]);
