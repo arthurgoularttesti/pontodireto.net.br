@@ -27,6 +27,7 @@ class ProductController extends Controller
 			// 'filters'		=> [1],
 			'rowActions'	=> [
 				(object) ['type'=>'edit', 'route'=>'product.edit'],
+				(object) ['type'=>'volume', 'route'=>'product.volume.list'],
 			],
 			'pageActions'	=> [
 				(object) ['type'=>'button', 'label'=>'Adicionar Produto', 'icon'=>'add', 'route'=>'product.create'],

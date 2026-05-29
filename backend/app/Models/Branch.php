@@ -18,7 +18,7 @@ class Branch extends Model
 {
 	const STATUS_ACTIVE			= 1;
 	const STATUS_INACTIVE		= 2;
-
+	
 	public static $statuses		= [
 		self::STATUS_ACTIVE			=> 'Ativo',
 		self::STATUS_INACTIVE		=> 'Inativo',

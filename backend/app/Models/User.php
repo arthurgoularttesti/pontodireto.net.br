@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Models\Branch;
 use App\Models\UserProfile;
 
 #[Fillable(['profile_id', 'name', 'email', 'password'])]
@@ -17,7 +19,7 @@ use App\Models\UserProfile;
 #[Table('users')]
 class User extends Authenticatable
 {
-	protected $with			= ['profile'];
+	protected $with			= ['profile', 'branches'];
 
 	public function CheckPermission (string|array $permissions) : bool
 	{
@@ -56,6 +58,11 @@ class User extends Authenticatable
 	public function Profile () : BelongsTo
 	{
 		return $this->belongsTo(UserProfile::class);
+	}
+
+	public function Branches () : BelongsToMany
+	{
+		return $this->belongsToMany(Branch::class, 'branches_users', 'user_id', 'branch_id');
 	}
 
 	protected function scopeFindByUsername ($query, ?string $username)

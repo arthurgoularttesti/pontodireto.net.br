@@ -99,7 +99,7 @@
 
 								@if($hasRowActions)
 
-									<th class="px-6 py-4 border-b border-slate-100 text-right">Ações</th>
+									<th class="px-6 py-4 border-b border-slate-100 text-right" style="text-align:center;">Ações</th>
 								
 								@endif
 							</tr>
@@ -130,8 +130,16 @@
 
 													@case('edit')
 
-														<a href="{{ route($action->route, [$row->id]) }}" class="w-10 h-10 inline-flex items-center justify-center text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-all">
+														<a title="Editar as informações" href="{{ route($action->route, [$row->id]) }}" class="w-10 h-10 inline-flex items-center justify-center text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-all">
 															<span class="material-symbols-outlined" data-icon="edit">edit</span>
+														</a>
+
+														@break
+
+													@case('volume')
+
+														<a title="Gerenciar os múltiplos tipos de volume/empacotamento" href="{{ route($action->route, [$row->id]) }}" class="w-10 h-10 inline-flex items-center justify-center text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-all">
+															<span class="material-symbols-outlined" data-icon="edit">dataset</span>
 														</a>
 
 														@break

@@ -14,6 +14,7 @@ return new class extends Migration
 		Schema::create('branches', function (Blueprint $table) {
 
 			$table->id();
+			$table->bigInteger('parent_id')->unsigned()->nullable();
 			$table->tinyInteger('status')->unsigned()->nullable();
 			$table->string('label')->nullable();
 			$table->string('name')->nullable();
@@ -28,6 +29,18 @@ return new class extends Migration
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->foreign('parent_id')->references('id')->on('branches');
+		
+		});
+
+		Schema::create('branches_users', function (Blueprint $table) {
+
+			$table->bigInteger('branch_id')->unsigned()->nullable();
+			$table->bigInteger('user_id')->unsigned()->nullable();
+
+			$table->foreign('branch_id')->references('id')->on('branches');
+			$table->foreign('user_id')->references('id')->on('users');
 		
 		});
 	}

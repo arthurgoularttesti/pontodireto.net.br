@@ -2,10 +2,10 @@
 
 return [
 
-	'user.view'						=> 'Pode ver a lista de usuários',
-	'user.create'					=> 'Pode adicionar um novo usuário ao sistema',
-	'user.edit'						=> 'Pode editar usuários que não tenham sido criados por ele mesmo',
-	'user.delete'					=> 'Pode deletar usuários que não tenham sido criados por ele mesmo',
+	// 'user.view'						=> 'Pode ver a lista de usuários',
+	// 'user.create'					=> 'Pode adicionar um novo usuário ao sistema',
+	// 'user.edit'						=> 'Pode editar usuários que não tenham sido criados por ele mesmo',
+	// 'user.delete'					=> 'Pode deletar usuários que não tenham sido criados por ele mesmo',
 
 	'product.view'					=> 'Pode ver a lista de produtos',
 	'product.create'				=> 'Pode criar um novo produto',
@@ -22,10 +22,10 @@ return [
 	'product.volume.edit'			=> 'Pode editar volume de produto que não tenham sido criadas por ele mesmo',
 	'product.volume.delete'			=> 'Pode excluir volume de produto que não tenham sido criadas por ele mesmo',
 	
-	'client.view'					=> 'Pode ver a lista de clientes',
+	// 'client.view'					=> 'Pode ver a lista de clientes',
 	
-	'stock.view'					=> 'Pode ver o estoque atual',
+	// 'stock.view'					=> 'Pode ver o estoque atual',
 	
-	'finance.view'					=> 'Pode ver os dados financeiros',
+	// 'finance.view'					=> 'Pode ver os dados financeiros',
 
 ];
