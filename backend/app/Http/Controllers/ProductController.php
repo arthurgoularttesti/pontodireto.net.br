@@ -41,7 +41,7 @@ class ProductController extends Controller
 
 	public function edit (Request $request, int $product)
 	{
-		return $this->_edit($request, Product::with(['category','volume'])->find($product));
+		return $this->_edit($request, Product::with(['category','volume', 'log', 'stock'])->find($product));
 	}
 
 	public function _edit (Request $request, Product $product)
@@ -52,16 +52,34 @@ class ProductController extends Controller
 				'category_id'		=> ['required'],
 				'status'			=> ['required'],
 				'name'				=> ['required'],
+				'description_short'	=> ['nullable'],
+				'description_long'	=> ['nullable'],
 				'sku'				=> ['required'],
-				'image'				=> ['required'],
+				'image'				=> ['nullable'],
 				'price'				=> ['required'],
-				'margin'			=> ['required'],
-				'criticalstock'		=> ['required'],
+				// 'margin'			=> ['required'],
+				// 'criticalstock'		=> ['required'],
 			]);
 
 			if (!$validator->fails())
 			{
-				return ['validou', $request->all()];
+				// return ['validou', $request->all()];
+
+				$product->name				= $request->input('name');
+				$product->category_id		= $request->input('category_id');
+				$product->status			= $request->input('status');
+				$product->name				= $request->input('name');
+				$product->description_short	= $request->input('description_short');
+				$product->description_long	= $request->input('description_long');
+				$product->sku				= $request->input('sku');
+				// $product->image				= $request->input('image');
+				$product->price				= $request->input('price');
+				// $product->margin			= $request->input('margin');
+				// $product->criticalstock		= $request->input('criticalstock');
+
+				$product->save();
+
+				return redirect()->route('product.edit', [$product->id])->with('success', $product->name . ' atualizado(a) com sucesso');
 			}
 
 			return ['não validou', $request->all()];

@@ -100,22 +100,22 @@
 				<div class="space-y-6">
 					<div class="flex gap-4">
 						<div class="flex-1">
-							<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Preço (R$)</label>
+							<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Preço de Venda (R$)</label>
 							<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-numeral-xl text-headline-md" step="0.01" type="number" name="price" step="0.01" value="{{ old('value', $data->price) }}" />
 						</div>
 						<div class="flex-1">
-							<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Custo Médio (R$)</label>
+							<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Custo Médio em Estoque (R$)</label>
 							<input class="w-full border-2 border-outline-variant focus:border-primary focus:ring-0 p-3 rounded-lg font-numeral-xl text-headline-md text-outline border-dashed" type="text" value="R$ {{ number_format($data->GetMediumPrice(), 2, ',', '.') }}" disabled />
 						</div>
 					</div>
-					<div class="bg-surface-container-low p-6 rounded-lg border-2 border-dashed border-outline-variant">
+					<!-- <div class="bg-surface-container-low p-6 rounded-lg border-2 border-dashed border-outline-variant">
 						<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Margem de Venda Final</label>
 						<div class="flex items-end gap-2">
 							<span class="font-display-price text-display-price text-primary">38,8%</span>
 							<span class="text-on-surface-variant mb-2 font-body-md">/ por unidade</span>
 						</div>
 						<p class="text-xs text-secondary font-label-bold mt-2">Lucro esperado: R$ 3.83 por unidade</p>
-					</div>
+					</div> -->
 				</div>
 			</section>
 

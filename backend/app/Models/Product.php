@@ -191,4 +191,14 @@ class Product extends Model
 	{
 		return $this->hasMany(ProductVolume::class);
 	}
+
+	public function stock () : HasMany
+	{
+		return $this->hasMany(ProductVolume::class);
+	}
+
+	public function log () : HasMany
+	{
+		return $this->hasMany(ProductVolume::class);
+	}
 }
