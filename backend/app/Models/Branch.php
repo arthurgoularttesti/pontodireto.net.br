@@ -23,4 +23,17 @@ class Branch extends Model
 		self::STATUS_ACTIVE			=> 'Ativo',
 		self::STATUS_INACTIVE		=> 'Inativo',
 	];
+
+	protected function fullLabelString() : Attribute
+	{
+		return Attribute::make(
+			get: function () {
+
+				$name  = is_null($this->parent_id) ? 'Matriz - ' : 'Filial - ';
+				$name .= $this->label;
+
+				return $name;
+			},
+		);
+	}
 }

@@ -1,3 +1,5 @@
+<?php $hasBranch = auth()->check() && !is_null(auth()->user()->CurrentBranch()); ?>
+
 <nav class="bg-blue-950 border-b border-blue-900 sticky top-0 z-50">
 	<div class="px-6 h-16 flex items-center justify-between">
 		<div class="flex items-center gap-8">
@@ -13,7 +15,7 @@
 
 				@foreach (config('menu') as $menu)
 
-					@if(!is_null($menu->permission) && !auth()->user()->CheckPermission($menu->permission))
+					@if(($menu->branch && $hasBranch) && (!is_null($menu->permission) && !auth()->user()->CheckPermission($menu->permission)))
 
 						@continue
 

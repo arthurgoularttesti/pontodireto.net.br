@@ -20,23 +20,19 @@ use App\Models\UserProfile;
 class User extends Authenticatable
 {
 	protected $with			= ['profile', 'branches'];
+	protected $branchesById = null;
 
 	public function CurrentBranch () : ?Branch
 	{
 		$config = $this->config;
 
 		if (!isset($config->branch) || is_null($config->branch))
-		{
-			if ($this->branches->count() <= 0)
 			return null;
 
-			$config->branch = $this->branches->first();
-			$this->config = $config;
+		if (is_null($this->branchesById))
+			$this->branchesById = $this->branches->keyBy('id');
 
-			$this->save();
-		}
-
-		return @$config->branch;
+		return $this->branchesById[$config->branch];
 	}
 
 	public function CheckPermission (string|array $permissions) : bool
@@ -68,8 +64,9 @@ class User extends Authenticatable
 	protected function casts(): array
 	{
 		return [
-			// 'email_verified_at' => 'datetime',
-			// 'password' => 'hashed',
+			// 'email_verified_at'	=> 'datetime',
+			// 'password'			=> 'hashed',
+			'config'			=> 'object',
 		];
 	}
 
