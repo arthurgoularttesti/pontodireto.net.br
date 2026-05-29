@@ -33,6 +33,6 @@ class UserSeeder extends Seeder
 
 		$branch = Branch::find(1);
 
-		
+		$user->branches()->sync($branch->id);
 	}
 }

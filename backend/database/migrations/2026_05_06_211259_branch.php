@@ -36,8 +36,10 @@ return new class extends Migration
 
 		Schema::create('branches_users', function (Blueprint $table) {
 
-			$table->bigInteger('branch_id')->unsigned()->nullable();
-			$table->bigInteger('user_id')->unsigned()->nullable();
+			$table->bigInteger('branch_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
+
+			$table->primary(['branch_id', 'user_id']);
 
 			$table->foreign('branch_id')->references('id')->on('branches');
 			$table->foreign('user_id')->references('id')->on('users');
